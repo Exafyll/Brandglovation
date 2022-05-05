@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_training"
         mc:Ignorable="d"
-        Title="Truls movement tester" Height="1080" Width="1920" Background="#03d3fc">
-    <StackPanel>
+        Title="Brädspel" Height="1064" Width="1920" Background="#03d3fc">
+    <StackPanel Margin="0,0,0,0">
 
 
         <Grid>
@@ -134,11 +134,9 @@
 
 
             </Grid>
-            <!-- Buttons -->
-            <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button Height="50" x:Name="MoveForwardButton" Click="MoveForwardButton_Click"  Content="Move Forward"/>
-                <Button Height="50" Content="Move Back"/>
-                <Button Height="50" Content="Move Random"/>
+            <!-- SidePanel-->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="870">
+
             </StackPanel>
         </Grid>
 

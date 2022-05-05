@@ -1,0 +1,147 @@
+﻿<Window x:Class="Wpf_training.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_training"
+        mc:Ignorable="d"
+        Title="Truls movement tester" Height="1080" Width="1920" Background="#03d3fc">
+    <StackPanel>
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1050px" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <!-- Board -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150px" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150px" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150px" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150px"/>
+                    <RowDefinition Height="100px"/>
+                    <RowDefinition Height="100px"/>
+                    <RowDefinition Height="100px"/>
+                    <RowDefinition Height="150px"/>
+                    <RowDefinition Height="100px"/>
+                    <RowDefinition Height="100px"/>
+                    <RowDefinition Height="100px"/>
+                    <RowDefinition Height="150px"/>
+                </Grid.RowDefinitions>
+
+                <!-- Blues -->
+                <Rectangle Grid.Column="0" Grid.Row="0"  Fill="Blue" />
+                <Rectangle Grid.Column="8" Grid.Row="0" Fill="Blue" />
+                <Rectangle Grid.Column="0" Grid.Row="9" Fill="Blue" />
+                <Rectangle Grid.Column="8" Grid.Row="8" Fill="Blue" />
+                <!-- Yellows -->
+                <Rectangle Grid.Column="4" Grid.Row="0" Fill="Yellow" />
+                <Rectangle Grid.Column="4" Grid.Row="9" Fill="Yellow" />
+                <!-- Oranges -->
+                <Rectangle Grid.Column="0" Grid.Row="4" Fill="Orange" />
+                <Rectangle Grid.Column="8" Grid.Row="4" Fill="Orange" />
+                <!-- Grays -->
+                <Rectangle Grid.Column="7" Grid.Row="8" Fill="Gray" />
+                <Rectangle Grid.Column="6" Grid.Row="8" Fill="Gray" />
+                <Rectangle Grid.Column="5" Grid.Row="8" Fill="Gray" />
+                <Rectangle Grid.Column="3" Grid.Row="8" Fill="Gray" />
+                <Rectangle Grid.Column="2" Grid.Row="8" Fill="Gray" />
+                <Rectangle Grid.Column="1" Grid.Row="8" Fill="Gray" />
+                <Rectangle Grid.Column="0" Grid.Row="7" Fill="Gray" />
+                <Rectangle Grid.Column="0" Grid.Row="6" Fill="Gray" />
+                <Rectangle Grid.Column="0" Grid.Row="5" Fill="Gray" />
+                <Rectangle Grid.Column="0" Grid.Row="3" Fill="Gray" />
+                <Rectangle Grid.Column="0" Grid.Row="2" Fill="Gray" />
+                <Rectangle Grid.Column="0" Grid.Row="1" Fill="Gray" />
+                <Rectangle Grid.Column="1" Grid.Row="0" Fill="Gray" />
+                <Rectangle Grid.Column="2" Grid.Row="0" Fill="Gray" />
+                <Rectangle Grid.Column="3" Grid.Row="0" Fill="Gray" />
+                <Rectangle Grid.Column="5" Grid.Row="0" Fill="Gray" />
+                <Rectangle Grid.Column="6" Grid.Row="0" Fill="Gray" />
+                <Rectangle Grid.Column="7" Grid.Row="0" Fill="Gray" />
+                <Rectangle Grid.Column="8" Grid.Row="1" Fill="Gray" />
+                <Rectangle Grid.Column="8" Grid.Row="2" Fill="Gray" />
+                <Rectangle Grid.Column="8" Grid.Row="3" Fill="Gray" />
+                <Rectangle Grid.Column="8" Grid.Row="5" Fill="Gray" />
+                <Rectangle Grid.Column="8" Grid.Row="6" Fill="Gray" />
+                <Rectangle Grid.Column="8" Grid.Row="7" Fill="Gray" />
+
+
+                <!-- Text -->
+                <!-- Scandinavia -->
+                <TextBlock Text="Sweden / start" FontWeight="Bold" Grid.Column="8" Grid.Row="8" Foreground="White"/>
+                <TextBlock Text="Norway" FontWeight="Bold" Grid.Column="7" Grid.Row="8" Foreground="White"/>
+                <TextBlock Text="Denmark" FontWeight="Bold" Grid.Column="6" Grid.Row="8" Foreground="White"/>
+                <TextBlock Text="Finland" FontWeight="Bold" Grid.Column="5" Grid.Row="8" Foreground="White"/>
+
+                <TextBlock Text="Company Newsletter" FontWeight="Bold" Grid.Column="4" Grid.Row="8"/>
+                <!-- Northen europe -->
+                <TextBlock Text="Germany" FontWeight="Bold" Grid.Column="3" Grid.Row="8" Foreground="White"/>
+                <TextBlock Text="France" FontWeight="Bold" Grid.Column="2" Grid.Row="8" Foreground="White"/>
+                <TextBlock Text="Belgium" FontWeight="Bold" Grid.Column="1" Grid.Row="8" Foreground="White"/>
+
+                <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="0" Grid.Row="8" Foreground="White"/>
+                <!-- North Amercia -->
+                <TextBlock Text="Usa" FontWeight="Bold" Grid.Column="0" Grid.Row="7" Foreground="White"/>
+                <TextBlock Text="Canada" FontWeight="Bold" Grid.Column="0" Grid.Row="6" Foreground="White"/>
+                <TextBlock Text="Mexico" FontWeight="Bold" Grid.Column="0" Grid.Row="5" Foreground="White"/>
+
+                <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="0" Grid.Row="4"/>
+                <!-- South America -->
+                <TextBlock Text="Jamaica" FontWeight="Bold" Grid.Column="0" Grid.Row="3" Foreground="White"/>
+                <TextBlock Text="Portorico" FontWeight="Bold" Grid.Column="0" Grid.Row="2" Foreground="White"/>
+                <TextBlock Text="Peru" FontWeight="Bold" Grid.Column="0" Grid.Row="1" Foreground="White"/>
+
+                <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Foreground="White"/>
+                <!-- Ociania -->
+                <TextBlock Text="Australia" FontWeight="Bold" Grid.Column="1" Grid.Row="0" Foreground="White"/>
+                <TextBlock Text="New Zealand" FontWeight="Bold" Grid.Column="2" Grid.Row="0" Foreground="White"/>
+                <TextBlock Text="Papaua new guinea" FontWeight="Bold" Grid.Column="3" Grid.Row="0" Foreground="White"/>
+
+                <TextBlock Text="Company Newsletter" FontWeight="Bold" Grid.Column="4" Grid.Row="0"/>
+                <!-- East Asia -->
+                <TextBlock Text="Japan" FontWeight="Bold" Grid.Column="5" Grid.Row="0" Foreground="White"/>
+                <TextBlock Text="South Korea" FontWeight="Bold" Grid.Column="6" Grid.Row="0" Foreground="White"/>
+                <TextBlock Text="China" FontWeight="Bold" Grid.Column="7" Grid.Row="0" Foreground="White"/>
+
+                <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="8" Grid.Row="0" Foreground="White"/>
+                <!-- West Asia -->
+                <TextBlock Text="India" FontWeight="Bold" Grid.Column="9" Grid.Row="1" Foreground="White"/>
+                <TextBlock Text="Pakistan" FontWeight="Bold" Grid.Column="9" Grid.Row="2" Foreground="White"/>
+                <TextBlock Text="Saudi arabia" FontWeight="Bold" Grid.Column="9" Grid.Row="3" Foreground="White"/>
+
+                <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="9" Grid.Row="4"/>
+
+                <!-- North africa -->
+                <TextBlock Text="Egypt" FontWeight="Bold" Grid.Column="9" Grid.Row="5" Foreground="White"/>
+                <TextBlock Text="Kongo" FontWeight="Bold" Grid.Column="9" Grid.Row="6" Foreground="White"/>
+                <TextBlock Text="Kenia" FontWeight="Bold" Grid.Column="9" Grid.Row="7" Foreground="White"/>
+
+
+
+
+
+            </Grid>
+            <!-- Buttons -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Height="50" x:Name="MoveForwardButton" Click="MoveForwardButton_Click"  Content="Move Forward"/>
+                <Button Height="50" Content="Move Back"/>
+                <Button Height="50" Content="Move Random"/>
+            </StackPanel>
+        </Grid>
+
+
+    </StackPanel>
+</Window>

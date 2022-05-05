@@ -136,7 +136,7 @@
             </Grid>
             <!-- SidePanel-->
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="870">
-                <TextBlock Text="Äpplen det är gott det"/>
+                <TextBlock Text="Äpplen det är gott det!"/>
             </StackPanel>
         </Grid>
 

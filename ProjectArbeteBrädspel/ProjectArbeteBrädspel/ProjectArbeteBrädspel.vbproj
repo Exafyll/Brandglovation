@@ -8,6 +8,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\au.png" />
+    <None Remove="Images\br.png" />
+    <None Remove="Images\ca.png" />
+    <None Remove="Images\cn.png" />
+    <None Remove="Images\co.png" />
+    <None Remove="Images\de.png" />
+    <None Remove="Images\dk.png" />
+    <None Remove="Images\eg.png" />
+    <None Remove="Images\fi.png" />
+    <None Remove="Images\fr.png" />
+    <None Remove="Images\gb.png" />
+    <None Remove="Images\in.png" />
+    <None Remove="Images\jp.png" />
+    <None Remove="Images\ke.png" />
+    <None Remove="Images\kr.png" />
+    <None Remove="Images\mx.png" />
+    <None Remove="Images\no.png" />
+    <None Remove="Images\nz.png" />
+    <None Remove="Images\pg.png" />
+    <None Remove="Images\pk.png" />
+    <None Remove="Images\sa.png" />
+    <None Remove="Images\se.png" />
+    <None Remove="Images\us.png" />
+    <None Remove="Images\ve.png" />
+    <None Remove="Images\za.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Import Include="System.Windows" />
     <Import Include="System.Windows.Controls" />
     <Import Include="System.Windows.Data" />
@@ -17,6 +45,34 @@
     <Import Include="System.Windows.Media.Imaging" />
     <Import Include="System.Windows.Navigation" />
     <Import Include="System.Windows.Shapes" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\au.png" />
+    <Resource Include="Images\br.png" />
+    <Resource Include="Images\ca.png" />
+    <Resource Include="Images\cn.png" />
+    <Resource Include="Images\co.png" />
+    <Resource Include="Images\de.png" />
+    <Resource Include="Images\dk.png" />
+    <Resource Include="Images\eg.png" />
+    <Resource Include="Images\fi.png" />
+    <Resource Include="Images\fr.png" />
+    <Resource Include="Images\gb.png" />
+    <Resource Include="Images\in.png" />
+    <Resource Include="Images\jp.png" />
+    <Resource Include="Images\ke.png" />
+    <Resource Include="Images\kr.png" />
+    <Resource Include="Images\mx.png" />
+    <Resource Include="Images\no.png" />
+    <Resource Include="Images\nz.png" />
+    <Resource Include="Images\pg.png" />
+    <Resource Include="Images\pk.png" />
+    <Resource Include="Images\sa.png" />
+    <Resource Include="Images\se.png" />
+    <Resource Include="Images\us.png" />
+    <Resource Include="Images\ve.png" />
+    <Resource Include="Images\za.png" />
   </ItemGroup>
 
 </Project>

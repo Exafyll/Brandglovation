@@ -1,12 +1,12 @@
-﻿<Window x:Class="Wpf_training.MainWindow"
+﻿<Window x:Class="ProjectArbeteBrädspel.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Wpf_training"
+        xmlns:local="clr-namespace:ProjectArbeteBrädspel"
         mc:Ignorable="d"
-        Title="Brädspel" Height="920" Width="1500" Background="#4C633D">
-    <Grid Margin="0,0,0,0">
+        Title="Brädspel" Height="920" Width="1500">
+    <Grid Margin="0" Background="#4C633D">
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -50,7 +50,7 @@
                 <Rectangle Grid.Column="8" Grid.Row="0" Fill="#2C5377" />
                 <Rectangle Grid.Column="0" Grid.Row="9" Fill="#2C5377" />
                 <Rectangle Grid.Column="8" Grid.Row="8" Fill="#2C5377" />
-                
+
                 <!-- Yellows -->
                 <Rectangle Grid.Column="4" Grid.Row="0" Fill="#FFE600" />
                 <Rectangle Grid.Column="4" Grid.Row="9" Fill="#FFE600" />
@@ -214,7 +214,7 @@
                         <TextBlock Text="Papaua" FontWeight="Bold" HorizontalAlignment="Center"/>
                         <TextBlock Text="new guinea" FontWeight="Bold" HorizontalAlignment="Center"/>
                     </StackPanel>
-                    
+
                 </Grid>
 
                 <!-- East Asia -->
@@ -321,7 +321,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                
+
                 <Image x:Name="Dice" Grid.Row="0" Grid.Column="0" Source="/Images/Dice/Dice1.png" Stretch="Fill"/>
                 <Button x:Name="Throw_Dice_Button" Click="Throw_Dice_Button_Click" Grid.Row="1" Grid.Column="0">Throw Dice</Button>
             </Grid>

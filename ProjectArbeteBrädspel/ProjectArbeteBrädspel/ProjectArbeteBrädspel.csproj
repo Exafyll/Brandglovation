@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>ProjectArbeteBrädspel</RootNamespace>
+    <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -14,6 +14,12 @@
     <None Remove="Images\cn.png" />
     <None Remove="Images\co.png" />
     <None Remove="Images\de.png" />
+    <None Remove="Images\Dice\Dice1.png" />
+    <None Remove="Images\Dice\Dice2.png" />
+    <None Remove="Images\Dice\Dice3.png" />
+    <None Remove="Images\Dice\Dice4.png" />
+    <None Remove="Images\Dice\Dice5.png" />
+    <None Remove="Images\Dice\Dice6.png" />
     <None Remove="Images\dk.png" />
     <None Remove="Images\eg.png" />
     <None Remove="Images\fi.png" />
@@ -36,24 +42,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Import Include="System.Windows" />
-    <Import Include="System.Windows.Controls" />
-    <Import Include="System.Windows.Data" />
-    <Import Include="System.Windows.Documents" />
-    <Import Include="System.Windows.Input" />
-    <Import Include="System.Windows.Media" />
-    <Import Include="System.Windows.Media.Imaging" />
-    <Import Include="System.Windows.Navigation" />
-    <Import Include="System.Windows.Shapes" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Images\au.png" />
     <Resource Include="Images\br.png" />
     <Resource Include="Images\ca.png" />
     <Resource Include="Images\cn.png" />
     <Resource Include="Images\co.png" />
     <Resource Include="Images\de.png" />
+    <Resource Include="Images\Dice\Dice1.png" />
+    <Resource Include="Images\Dice\Dice2.png" />
+    <Resource Include="Images\Dice\Dice3.png" />
+    <Resource Include="Images\Dice\Dice4.png" />
+    <Resource Include="Images\Dice\Dice5.png" />
+    <Resource Include="Images\Dice\Dice6.png" />
     <Resource Include="Images\dk.png" />
     <Resource Include="Images\eg.png" />
     <Resource Include="Images\fi.png" />

@@ -76,7 +76,7 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Image Grid.Row="0"  Source="/Images/no.png" Stretch="fill"/>
-                    <TextBlock Text="Norway" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Saudi Arabiaaaaa" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid x:Name="Dk" Grid.Column="6" Grid.Row="8" Background="white">
                     <Grid.RowDefinitions>

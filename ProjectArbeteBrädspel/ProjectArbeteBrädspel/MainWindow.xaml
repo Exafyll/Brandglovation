@@ -205,12 +205,16 @@
                 </Grid>
                 <Grid x:Name="Pg" Grid.Column="3" Grid.Row="0" Background="white">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="42"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Image Grid.Row="0"  Source="/Images/Pg.png" Stretch="fill"/>
-                    <TextBlock Text="Papaua new guinea" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text="Papaua" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <TextBlock Text="new guinea" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    
                 </Grid>
 
                 <!-- East Asia -->
@@ -305,11 +309,21 @@
             <Grid Grid.Row="1" Grid.Column="1" Background="#FF232323" Margin="0 50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-
+                
+                <Image x:Name="Dice" Grid.Row="0" Grid.Column="0" Source="/Images/Dice/Dice1.png" Stretch="Fill"/>
+                <Button x:Name="Throw_Dice_Button" Click="Throw_Dice_Button_Click" Grid.Row="1" Grid.Column="0">Throw Dice</Button>
             </Grid>
         </Grid>
 

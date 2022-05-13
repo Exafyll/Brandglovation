@@ -27,7 +27,14 @@ namespace ProjectArbeteBrädspel
 
         private void Throw_Dice_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            var rnd = new Random();
+            int dieThrow = rnd.Next(1, 7);
+            string path = "/Images/Dice/Dice" + dieThrow + ".png";
+            Die.Source = new BitmapImage(new Uri(@path, UriKind.RelativeOrAbsolute));
         }
+
+
+
+
     }
 }

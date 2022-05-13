@@ -322,7 +322,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Image x:Name="Dice" Grid.Row="0" Grid.Column="0" Source="/Images/Dice/Dice1.png" Stretch="Fill"/>
+                <Image x:Name="Die" Grid.Row="0" Grid.Column="0" Source="/Images/Dice/Dice1.png" Stretch="Fill"/>
                 <Button x:Name="Throw_Dice_Button" Click="Throw_Dice_Button_Click" Grid.Row="1" Grid.Column="0">Throw Dice</Button>
             </Grid>
         </Grid>

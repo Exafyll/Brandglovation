@@ -10,300 +10,321 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
 
 
-            <!-- Board -->
-            <Grid x:Name="Board_Grid" Grid.Row="1" Background="#2E2E2E" Margin="50">
+            <Grid x:Name="BoardContainer" Grid.Column="0" Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="75" />
-                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="{Binding ElementName=BoardContainer, Path=ActualHeight}" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="75"/>
-                    <RowDefinition Height="75"/>
-                    <RowDefinition Height="75"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="75"/>
-                    <RowDefinition Height="75"/>
-                    <RowDefinition Height="75"/>
-                    <RowDefinition Height="100"/>
-                </Grid.RowDefinitions>
 
-                <!-- Blues -->
-                <Rectangle Grid.Column="0" Grid.Row="0"  Fill="#2C5377" />
-                <Rectangle Grid.Column="8" Grid.Row="0" Fill="#2C5377" />
-                <Rectangle Grid.Column="0" Grid.Row="9" Fill="#2C5377" />
-                <Rectangle Grid.Column="8" Grid.Row="8" Fill="#2C5377" />
+                <!-- Board -->
+                <Grid x:Name="Board_Grid" Grid.Column="1" Background="#2E2E2E" Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1.5*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
 
-                <!-- Yellows -->
-                <Rectangle Grid.Column="4" Grid.Row="0" Fill="#FFE600" />
-                <Rectangle Grid.Column="4" Grid.Row="9" Fill="#FFE600" />
-                <!-- Oranges -->
-                <Rectangle Grid.Column="0" Grid.Row="4" Fill="#BE5E18" />
-                <Rectangle Grid.Column="8" Grid.Row="4" Fill="#BE5E18" />
+                    <!-- Blues -->
+                    <Rectangle Grid.Column="0" Grid.Row="0"  Fill="#2C5377" />
+                    <Rectangle Grid.Column="8" Grid.Row="0" Fill="#2C5377" />
+                    <Rectangle Grid.Column="0" Grid.Row="9" Fill="#2C5377" />
+                    <Rectangle Grid.Column="8" Grid.Row="8" Fill="#2C5377" />
 
-                <!-- Text -->
-                <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="9" Grid.Row="4" HorizontalAlignment="Center"/>
-                <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="8" Grid.Row="0" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="Company Newsletter" FontWeight="Bold" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center"/>
-                <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center"/>
-                <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="0" Grid.Row="8" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="Sweden / start" FontWeight="Bold" Grid.Column="8" Grid.Row="8" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="Company Newsletter" FontWeight="Bold" Grid.Column="4" Grid.Row="8"/>
+                    <!-- Yellows -->
+                    <Rectangle Grid.Column="4" Grid.Row="0" Fill="{StaticResource CompanyYellowBrush}" />
+                    <Rectangle Grid.Column="4" Grid.Row="9" Fill="{StaticResource CompanyYellowBrush}" />
+                    
+                    <!-- Oranges -->
+                    <Rectangle Grid.Column="0" Grid.Row="4" Fill="#BE5E18" />
+                    <Rectangle Grid.Column="8" Grid.Row="4" Fill="#BE5E18" />
 
-                <!-- Scandinavia -->
-                <Grid x:Name="No" Grid.Column="7" Grid.Row="8" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/no.png" Stretch="fill"/>
-                    <TextBlock Text="Norway" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Dk" Grid.Column="6" Grid.Row="8" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Dk.png" Stretch="fill"/>
-                    <TextBlock Text="Denmark" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Fi" Grid.Column="5" Grid.Row="8" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Fi.png" Stretch="fill"/>
-                    <TextBlock Text="Finland" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
+                    <!-- Text -->
+                    <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="9" Grid.Row="4" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="8" Grid.Row="0" Foreground="White" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Company Newsletter" FontWeight="Bold" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Foreground="White" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="0" Grid.Row="8" Foreground="White" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Sweden / start" FontWeight="Bold" Grid.Column="8" Grid.Row="8" Foreground="White" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Company Newsletter" FontWeight="Bold" Grid.Column="4" Grid.Row="8"/>
 
-                <!-- Northen europe -->
-                <Grid x:Name="De" Grid.Column="3" Grid.Row="8" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/De.png" Stretch="fill"/>
-                    <TextBlock Text="Germany" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Fr" Grid.Column="2" Grid.Row="8" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Fr.png" Stretch="fill"/>
-                    <TextBlock Text="France" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Uk" Grid.Column="1" Grid.Row="8" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Gb.png" Stretch="fill"/>
-                    <TextBlock Text="Great Brittan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
+                    <!-- Scandinavia -->
+                    <Grid x:Name="No" Grid.Column="7" Grid.Row="8" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
 
-                <!-- North Amercia -->
-                <Grid x:Name="Us" Grid.Column="0" Grid.Row="7" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Us.png" Stretch="fill"/>
-                    <TextBlock Text="USA" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Ca" Grid.Column="0" Grid.Row="6" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Ca.png" Stretch="fill"/>
-                    <TextBlock Text="Canada" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Mx" Grid.Column="0" Grid.Row="5" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Mx.png" Stretch="fill"/>
-                    <TextBlock Text="Mexico" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
+                        <Image Grid.Row="0"  Source="/Images/no.png" Stretch="fill"/>
+                        <Grid Grid.Row="1" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                        </Grid>
+                        <TextBlock Text="Norway" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Dk" Grid.Column="6" Grid.Row="8" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Dk.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Denmark" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Fi" Grid.Column="5" Grid.Row="8" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Fi.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Finland" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
 
-                <!-- South America -->
-                <Grid x:Name="Co" Grid.Column="0" Grid.Row="3" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Co.png" Stretch="fill"/>
-                    <TextBlock Text="Colombia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Ve" Grid.Column="0" Grid.Row="2" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Ve.png" Stretch="fill"/>
-                    <TextBlock Text="Venuzuerla" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Br" Grid.Column="0" Grid.Row="1" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Br.png" Stretch="fill"/>
-                    <TextBlock Text="Brazil" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
+                    <!-- Northen europe -->
+                    <Grid x:Name="De" Grid.Column="3" Grid.Row="8" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/De.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Germany" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Fr" Grid.Column="2" Grid.Row="8" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Fr.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="France" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Uk" Grid.Column="1" Grid.Row="8" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Gb.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Great Brittan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
 
-                <!-- Ociania -->
-                <Grid x:Name="Au" Grid.Column="1" Grid.Row="0" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Au.png" Stretch="fill"/>
-                    <TextBlock Text="Australia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Nz" Grid.Column="2" Grid.Row="0" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Nz.png" Stretch="fill"/>
-                    <TextBlock Text="New Zealand" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Pg" Grid.Column="3" Grid.Row="0" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="42"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Pg.png" Stretch="fill"/>
-                    <StackPanel Grid.Row="2">
-                        <TextBlock Text="Papaua" FontWeight="Bold" HorizontalAlignment="Center"/>
-                        <TextBlock Text="new guinea" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    </StackPanel>
+                    <!-- North Amercia -->
+                    <Grid x:Name="Us" Grid.Column="0" Grid.Row="7" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Us.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="USA" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Ca" Grid.Column="0" Grid.Row="6" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Ca.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Canada" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Mx" Grid.Column="0" Grid.Row="5" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Mx.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Mexico" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- South America -->
+                    <Grid x:Name="Co" Grid.Column="0" Grid.Row="3" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Co.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Colombia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Ve" Grid.Column="0" Grid.Row="2" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Ve.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Venuzuerla" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Br" Grid.Column="0" Grid.Row="1" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Br.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Brazil" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Ociania -->
+                    <Grid x:Name="Au" Grid.Column="1" Grid.Row="0" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Au.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Australia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Nz" Grid.Column="2" Grid.Row="0" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Nz.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="New Zealand" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Pg" Grid.Column="3" Grid.Row="0" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="42"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Pg.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Row="2">
+                            <TextBlock Text="Papaua" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            <TextBlock Text="new guinea" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        </StackPanel>
+
+                    </Grid>
+
+                    <!-- East Asia -->
+                    <Grid x:Name="Cn" Grid.Column="5" Grid.Row="0" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Cn.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="China" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Jp" Grid.Column="6" Grid.Row="0" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Jp.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Japan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Kr" Grid.Column="7" Grid.Row="0" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Kr.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="South Korea" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- West Asia -->
+                    <Grid x:Name="In" Grid.Column="8" Grid.Row="1" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/In.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="India" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Pk" Grid.Column="8" Grid.Row="2" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Pk.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Pakistan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Sa" Grid.Column="8" Grid.Row="3" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Sa.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Saudi Arabia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- North africa -->
+                    <Grid x:Name="Eg" Grid.Column="8" Grid.Row="5" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Eg.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Egypt" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Za" Grid.Column="8" Grid.Row="6" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Za.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="South Africa" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid x:Name="Ke" Grid.Column="8" Grid.Row="7" Background="white">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0"  Source="/Images/Ke.png"  Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <TextBlock Text="Kenya" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
+                    </Grid>
 
                 </Grid>
-
-                <!-- East Asia -->
-                <Grid x:Name="Cn" Grid.Column="5" Grid.Row="0" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Cn.png" Stretch="fill"/>
-                    <TextBlock Text="China" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Jp" Grid.Column="6" Grid.Row="0" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Jp.png" Stretch="fill"/>
-                    <TextBlock Text="Japan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Kr" Grid.Column="7" Grid.Row="0" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Kr.png" Stretch="fill"/>
-                    <TextBlock Text="South Korea" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-
-                <!-- West Asia -->
-                <Grid x:Name="In" Grid.Column="8" Grid.Row="1" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/In.png" Stretch="fill"/>
-                    <TextBlock Text="India" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Pk" Grid.Column="8" Grid.Row="2" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Pk.png" Stretch="fill"/>
-                    <TextBlock Text="Pakistan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Sa" Grid.Column="8" Grid.Row="3" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Sa.png" Stretch="fill"/>
-                    <TextBlock Text="Saudi Arabia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-
-                <!-- North africa -->
-                <Grid x:Name="Eg" Grid.Column="8" Grid.Row="5" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Eg.png" Stretch="fill"/>
-                    <TextBlock Text="Egypt" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Za" Grid.Column="8" Grid.Row="6" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Za.png" Stretch="fill"/>
-                    <TextBlock Text="South Africa" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-                <Grid x:Name="Ke" Grid.Column="8" Grid.Row="7" Background="white">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Image Grid.Row="0"  Source="/Images/Ke.png" Stretch="fill"/>
-                    <TextBlock Text="Kenya" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                </Grid>
-
             </Grid>
             <!-- SidePanel-->
             <Grid Grid.Row="1" Grid.Column="1" Background="#FF232323" Margin="0 50">

@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Base Colors -->
+    <Color x:Key="ThemeBackground">#4C633D</Color>
+    <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{StaticResource ThemeBackground}" />
+
+    <Color x:Key="Background">#2E2E2E</Color>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource Background}" />
+
+    <Color x:Key="BackgroundLight">#474747</Color>
+    <SolidColorBrush x:Key="BackgroundLightBrush" Color="{StaticResource BackgroundLight}" />
+
+    <Color x:Key="Foreground">White</Color>
+    <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource Foreground}" />
+
+    <Color x:Key="HighlightYellow">#FFE600</Color>
+    <SolidColorBrush x:Key="HighlightYellowBrush" Color="{StaticResource HighlightYellow}" />
+
+    <Color x:Key="ErrorRed">#A62B2B</Color>
+    <SolidColorBrush x:Key="ErrorRedBrush" Color="{StaticResource ErrorRed}" />
+
+
+
+    <!-- Object Colors -->
+    <Color x:Key="GrowthBlue">#2C5377</Color>
+    <SolidColorBrush x:Key="GrowthBlueBrush" Color="{StaticResource GrowthBlue}" />
+
+    <Color x:Key="MarketOrange">#BE5E18</Color>
+    <SolidColorBrush x:Key="MarketOrangeBrush" Color="{StaticResource MarketOrange}" />
+
+    <Color x:Key="CompanyYellow">#CAAC0D</Color>
+    <SolidColorBrush x:Key="CompanyYellowBrush" Color="{StaticResource CompanyYellow}" />
+    
+    
+    
+    <!-- Player Colors -->
+    <Color x:Key="PlayerRed">#A62B2B</Color>
+    <SolidColorBrush x:Key="PlayerRedBrush" Color="{StaticResource PlayerRed}" />
+
+    <Color x:Key="PlayerGrey">#707070</Color>
+    <SolidColorBrush x:Key="PlayerGreyBrush" Color="{StaticResource PlayerGrey}" />
+
+    <Color x:Key="PlayerYellow">#FFE600</Color>
+    <SolidColorBrush x:Key="PlayerYellowBrush" Color="{StaticResource PlayerYellow}" />
+
+    <Color x:Key="PlayerGreen">#57B22D</Color>
+    <SolidColorBrush x:Key="PlayerGreenBrush" Color="{StaticResource PlayerGreen}" />
+
+    <Color x:Key="PlayerBlue">#358FC1</Color>
+    <SolidColorBrush x:Key="PlayerBlueBrush" Color="{StaticResource PlayerBlue}" />
+
+    <Color x:Key="PlayerPurple">#A73178</Color>
+    <SolidColorBrush x:Key="PlayerPurpleBrush" Color="{StaticResource PlayerPurple}" />
+
+</ResourceDictionary>

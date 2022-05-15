@@ -53,18 +53,18 @@
                     </Grid.RowDefinitions>
 
                     <!-- Blues -->
-                    <Rectangle Grid.Column="0" Grid.Row="0"  Fill="#2C5377" />
-                    <Rectangle Grid.Column="8" Grid.Row="0" Fill="#2C5377" />
-                    <Rectangle Grid.Column="0" Grid.Row="9" Fill="#2C5377" />
-                    <Rectangle Grid.Column="8" Grid.Row="8" Fill="#2C5377" />
+                    <Rectangle Grid.Column="0" Grid.Row="0" Fill="{StaticResource GrowthBlueBrush}"/>
+                    <Rectangle Grid.Column="8" Grid.Row="0" Fill="{StaticResource GrowthBlueBrush}"/>
+                    <Rectangle Grid.Column="0" Grid.Row="9" Fill="{StaticResource GrowthBlueBrush}"/>
+                    <Rectangle Grid.Column="8" Grid.Row="8" Fill="{StaticResource GrowthBlueBrush}"/>
 
                     <!-- Yellows -->
                     <Rectangle Grid.Column="4" Grid.Row="0" Fill="{StaticResource CompanyYellowBrush}" />
                     <Rectangle Grid.Column="4" Grid.Row="9" Fill="{StaticResource CompanyYellowBrush}" />
-                    
+
                     <!-- Oranges -->
-                    <Rectangle Grid.Column="0" Grid.Row="4" Fill="#BE5E18" />
-                    <Rectangle Grid.Column="8" Grid.Row="4" Fill="#BE5E18" />
+                    <Rectangle Grid.Column="0" Grid.Row="4" Fill="{StaticResource MarketOrangeBrush}"/>
+                    <Rectangle Grid.Column="8" Grid.Row="4" Fill="{StaticResource MarketOrangeBrush}"/>
 
                     <!-- Text -->
                     <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="9" Grid.Row="4" HorizontalAlignment="Center"/>
@@ -225,11 +225,11 @@
                     </Grid>
                     <Grid x:Name="Pg" Grid.Column="3" Grid.Row="0" Background="white">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="42"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Pg.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                        <Image  Source="/Images/Pg.png" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <StackPanel Grid.Row="2">
                             <TextBlock Text="Papaua" FontWeight="Bold" HorizontalAlignment="Center"/>
                             <TextBlock Text="new guinea" FontWeight="Bold" HorizontalAlignment="Center"/>

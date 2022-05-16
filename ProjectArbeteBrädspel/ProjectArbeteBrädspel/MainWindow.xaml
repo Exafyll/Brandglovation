@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjectArbeteBrädspel"
         mc:Ignorable="d"
         Title="Brädspel" Height="920" Width="1500">
-    <Grid Margin="0" Background="#4C633D">
+    <Grid Margin="0" Background="{StaticResource ThemeBackgroundBrush}">
 
         <Grid>
             <Grid.ColumnDefinitions>
@@ -28,7 +28,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Board -->
-                <Grid x:Name="Board_Grid" Grid.Column="1" Background="#2E2E2E" Margin="0">
+                <Grid x:Name="Board_Grid" Grid.Column="1" Background="{StaticResource BackgroundBrush}" Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1.5*" />
                         <ColumnDefinition Width="*" />
@@ -53,276 +53,58 @@
                     </Grid.RowDefinitions>
 
                     <!-- Blues -->
-                    <Rectangle Grid.Column="0" Grid.Row="0" Fill="{StaticResource GrowthBlueBrush}"/>
-                    <Rectangle Grid.Column="8" Grid.Row="0" Fill="{StaticResource GrowthBlueBrush}"/>
-                    <Rectangle Grid.Column="0" Grid.Row="9" Fill="{StaticResource GrowthBlueBrush}"/>
-                    <Rectangle Grid.Column="8" Grid.Row="8" Fill="{StaticResource GrowthBlueBrush}"/>
+                    <local:GrowthTile Grid.Column="0" Grid.Row="0" />
+                    <local:GrowthTile Grid.Column="8" Grid.Row="0" />
+                    <local:GrowthTile Grid.Column="0" Grid.Row="8" />
 
                     <!-- Yellows -->
-                    <Rectangle Grid.Column="4" Grid.Row="0" Fill="{StaticResource CompanyYellowBrush}" />
-                    <Rectangle Grid.Column="4" Grid.Row="9" Fill="{StaticResource CompanyYellowBrush}" />
+                    <local:CompanyTile Grid.Column="4" Grid.Row="0" />
+                    <local:CompanyTile Grid.Column="4" Grid.Row="8" />
 
                     <!-- Oranges -->
-                    <Rectangle Grid.Column="0" Grid.Row="4" Fill="{StaticResource MarketOrangeBrush}"/>
-                    <Rectangle Grid.Column="8" Grid.Row="4" Fill="{StaticResource MarketOrangeBrush}"/>
-
-                    <!-- Text -->
-                    <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="9" Grid.Row="4" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="8" Grid.Row="0" Foreground="White" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Company Newsletter" FontWeight="Bold" Grid.Column="4" Grid.Row="0" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Foreground="White" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Market information" FontWeight="Bold" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Groth Strategies" FontWeight="Bold" Grid.Column="0" Grid.Row="8" Foreground="White" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Sweden / start" FontWeight="Bold" Grid.Column="8" Grid.Row="8" Foreground="White" HorizontalAlignment="Center"/>
-                    <TextBlock Text="Company Newsletter" FontWeight="Bold" Grid.Column="4" Grid.Row="8"/>
+                    <local:MarketTile Grid.Column="0" Grid.Row="4" />
+                    <local:MarketTile Grid.Column="8" Grid.Row="4" />
 
                     <!-- Scandinavia -->
-                    <Grid x:Name="No" Grid.Column="7" Grid.Row="8" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-
-                        <Image Grid.Row="0"  Source="/Images/no.png" Stretch="fill"/>
-                        <Grid Grid.Row="1" Margin="5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                        </Grid>
-                        <TextBlock Text="Norway" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Dk" Grid.Column="6" Grid.Row="8" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Dk.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Denmark" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Fi" Grid.Column="5" Grid.Row="8" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Fi.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Finland" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
+                    <local:CountryTile Grid.Column="8" Grid.Row="8" Title="Sweden | Start" FlagSource="/Images/se.png" />
+                    <local:CountryTile Grid.Column="7" Grid.Row="8" Title="Norway" FlagSource="/Images/no.png" />
+                    <local:CountryTile Grid.Column="6" Grid.Row="8" Title="Denmark" FlagSource="/Images/dk.png" />
+                    <local:CountryTile Grid.Column="5" Grid.Row="8" Title="Finland" FlagSource="/Images/fi.png" />
 
                     <!-- Northen europe -->
-                    <Grid x:Name="De" Grid.Column="3" Grid.Row="8" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/De.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Germany" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Fr" Grid.Column="2" Grid.Row="8" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Fr.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="France" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Uk" Grid.Column="1" Grid.Row="8" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Gb.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Great Brittan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
+                    <local:CountryTile Grid.Column="3" Grid.Row="8" Title="Germany" FlagSource="/Images/de.png" />
+                    <local:CountryTile Grid.Column="2" Grid.Row="8" Title="France" FlagSource="/Images/fr.png" />
+                    <local:CountryTile Grid.Column="1" Grid.Row="8" Title="United Kingdom" FlagSource="/Images/gb.png" />
 
-                    <!-- North Amercia -->
-                    <Grid x:Name="Us" Grid.Column="0" Grid.Row="7" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Us.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="USA" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Ca" Grid.Column="0" Grid.Row="6" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Ca.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Canada" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Mx" Grid.Column="0" Grid.Row="5" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Mx.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Mexico" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
+                    <!-- North America -->
+                    <local:CountryTile Grid.Column="0" Grid.Row="7" Title="United States" FlagSource="/Images/us.png" />
+                    <local:CountryTile Grid.Column="0" Grid.Row="6" Title="Canada" FlagSource="/Images/ca.png" />
+                    <local:CountryTile Grid.Column="0" Grid.Row="5" Title="Mexico" FlagSource="/Images/mx.png" />
 
                     <!-- South America -->
-                    <Grid x:Name="Co" Grid.Column="0" Grid.Row="3" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Co.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Colombia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Ve" Grid.Column="0" Grid.Row="2" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Ve.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Venuzuerla" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Br" Grid.Column="0" Grid.Row="1" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Br.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Brazil" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
+                    <local:CountryTile Grid.Column="0" Grid.Row="3" Title="Colombia" FlagSource="/Images/co.png" />
+                    <local:CountryTile Grid.Column="0" Grid.Row="2" Title="Venezuela" FlagSource="/Images/ve.png" />
+                    <local:CountryTile Grid.Column="0" Grid.Row="1" Title="Brazil" FlagSource="/Images/br.png" />
 
-                    <!-- Ociania -->
-                    <Grid x:Name="Au" Grid.Column="1" Grid.Row="0" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Au.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Australia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Nz" Grid.Column="2" Grid.Row="0" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Nz.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="New Zealand" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Pg" Grid.Column="3" Grid.Row="0" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image  Source="/Images/Pg.png" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        <StackPanel Grid.Row="2">
-                            <TextBlock Text="Papaua" FontWeight="Bold" HorizontalAlignment="Center"/>
-                            <TextBlock Text="new guinea" FontWeight="Bold" HorizontalAlignment="Center"/>
-                        </StackPanel>
-
-                    </Grid>
+                    <!-- Oceania -->
+                    <local:CountryTile Grid.Column="1" Grid.Row="0" Title="Australia" FlagSource="/Images/au.png" />
+                    <local:CountryTile Grid.Column="2" Grid.Row="0" Title="New Zealand" FlagSource="/Images/nz.png" />
+                    <local:CountryTile Grid.Column="3" Grid.Row="0" Title="Papua New Guinea" FlagSource="/Images/pg.png" />
 
                     <!-- East Asia -->
-                    <Grid x:Name="Cn" Grid.Column="5" Grid.Row="0" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Cn.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="China" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Jp" Grid.Column="6" Grid.Row="0" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Jp.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Japan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Kr" Grid.Column="7" Grid.Row="0" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Kr.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="South Korea" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
+                    <local:CountryTile Grid.Column="5" Grid.Row="0" Title="China" FlagSource="/Images/cn.png" />
+                    <local:CountryTile Grid.Column="6" Grid.Row="0" Title="Japan" FlagSource="/Images/jp.png" />
+                    <local:CountryTile Grid.Column="7" Grid.Row="0" Title="South Korea" FlagSource="/Images/kr.png" />
 
                     <!-- West Asia -->
-                    <Grid x:Name="In" Grid.Column="8" Grid.Row="1" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/In.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="India" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Pk" Grid.Column="8" Grid.Row="2" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Pk.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Pakistan" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Sa" Grid.Column="8" Grid.Row="3" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Sa.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Saudi Arabia" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
+                    <local:CountryTile Grid.Column="8" Grid.Row="1" Title="India" FlagSource="/Images/in.png" />
+                    <local:CountryTile Grid.Column="8" Grid.Row="2" Title="Pakistan" FlagSource="/Images/pk.png" />
+                    <local:CountryTile Grid.Column="8" Grid.Row="3" Title="Saudi Arabia" FlagSource="/Images/sa.png" />
 
                     <!-- North africa -->
-                    <Grid x:Name="Eg" Grid.Column="8" Grid.Row="5" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Eg.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Egypt" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Za" Grid.Column="8" Grid.Row="6" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Za.png" Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="South Africa" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid x:Name="Ke" Grid.Column="8" Grid.Row="7" Background="white">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0"  Source="/Images/Ke.png"  Stretch="UniformToFill" VerticalAlignment="Center"/>
-                        <TextBlock Text="Kenya" FontWeight="Bold" Grid.Row="2" HorizontalAlignment="Center"/>
-                    </Grid>
+                    <local:CountryTile Grid.Column="8" Grid.Row="5" Title="Egypt" FlagSource="/Images/eg.png" />
+                    <local:CountryTile Grid.Column="8" Grid.Row="6" Title="South Africa" FlagSource="/Images/za.png" />
+                    <local:CountryTile Grid.Column="8" Grid.Row="7" Title="Kenya" FlagSource="/Images/ke.png" />
 
                 </Grid>
             </Grid>

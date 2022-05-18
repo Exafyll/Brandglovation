@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectArbeteBrädspel"
         mc:Ignorable="d"
-        Title="Brädspel" Height="920" Width="1500">
+        Title="BoardGame" Height="920" Width="1500">
     <Grid Margin="0" Background="{StaticResource ThemeBackgroundBrush}">
 
         <Grid>
@@ -127,9 +127,10 @@
 
                 <Image x:Name="Die" Grid.Row="0" Grid.Column="0" Source="/Images/Dice/Dice1.png" Stretch="Fill"/>
                 <Button x:Name="Throw_Dice_Button" Click="Throw_Dice_Button_Click" Grid.Row="1" Grid.Column="0">Throw Dice</Button>
+
+                
+
             </Grid>
         </Grid>
-
-
     </Grid>
 </Window>

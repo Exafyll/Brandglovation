@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<ROOT>
+    <CARD ID="1">
+      <TEXT>Detta är en text som beskriver hur noge suger get pung</TEXT>
+      <POINTS>500</POINTS>
+      <COUNTRY>NO</COUNTRY>
+    </CARD>
+    <CARD ID="2">
+      <TEXT>Detta är en text som beskriver hur tysk igengörskonst är betydligt mycket bättre en konkuransen</TEXT>
+      <POINTS>1500</POINTS>
+      <COUNTRY>DE</COUNTRY>
+    </CARD>
+</ROOT>

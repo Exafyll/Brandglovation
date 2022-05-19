@@ -5,129 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectArbeteBrädspel"
         mc:Ignorable="d"
-        Title="Brädspel" Height="920" Width="1500">
+        Title="Brädspel" 
+        Height="920" Width="1500"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
     <Grid Margin="0" Background="{StaticResource ThemeBackgroundBrush}">
 
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="300" />
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
 
 
-            <Grid x:Name="BoardContainer" Grid.Column="0" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="{Binding ElementName=BoardContainer, Path=ActualHeight}" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <local:GameView Grid.Row="1" Grid.Column="1" DataContext="{Binding GameViewModel}" />
 
-                <!-- Board -->
-                <Grid x:Name="Board_Grid" Grid.Column="1" Background="{StaticResource BackgroundBrush}" Margin="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.5*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="1.5*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="1.5*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1.5*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="1.5*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="1.5*"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- Blues -->
-                    <local:GrowthTile Grid.Column="0" Grid.Row="0" />
-                    <local:GrowthTile Grid.Column="8" Grid.Row="0" />
-                    <local:GrowthTile Grid.Column="0" Grid.Row="8" />
-
-                    <!-- Yellows -->
-                    <local:CompanyTile Grid.Column="4" Grid.Row="0" />
-                    <local:CompanyTile Grid.Column="4" Grid.Row="8" />
-
-                    <!-- Oranges -->
-                    <local:MarketTile Grid.Column="0" Grid.Row="4" />
-                    <local:MarketTile Grid.Column="8" Grid.Row="4" />
-
-                    <!-- Scandinavia -->
-                    <local:CountryTile Grid.Column="8" Grid.Row="8" Title="Sweden | Start" FlagSource="/Images/se.png" />
-                    <local:CountryTile Grid.Column="7" Grid.Row="8" Title="Norway" FlagSource="/Images/no.png" />
-                    <local:CountryTile Grid.Column="6" Grid.Row="8" Title="Denmark" FlagSource="/Images/dk.png" />
-                    <local:CountryTile Grid.Column="5" Grid.Row="8" Title="Finland" FlagSource="/Images/fi.png" />
-
-                    <!-- Northen europe -->
-                    <local:CountryTile Grid.Column="3" Grid.Row="8" Title="Germany" FlagSource="/Images/de.png" />
-                    <local:CountryTile Grid.Column="2" Grid.Row="8" Title="France" FlagSource="/Images/fr.png" />
-                    <local:CountryTile Grid.Column="1" Grid.Row="8" Title="United Kingdom" FlagSource="/Images/gb.png" />
-
-                    <!-- North America -->
-                    <local:CountryTile Grid.Column="0" Grid.Row="7" Title="United States" FlagSource="/Images/us.png" />
-                    <local:CountryTile Grid.Column="0" Grid.Row="6" Title="Canada" FlagSource="/Images/ca.png" />
-                    <local:CountryTile Grid.Column="0" Grid.Row="5" Title="Mexico" FlagSource="/Images/mx.png" />
-
-                    <!-- South America -->
-                    <local:CountryTile Grid.Column="0" Grid.Row="3" Title="Colombia" FlagSource="/Images/co.png" />
-                    <local:CountryTile Grid.Column="0" Grid.Row="2" Title="Venezuela" FlagSource="/Images/ve.png" />
-                    <local:CountryTile Grid.Column="0" Grid.Row="1" Title="Brazil" FlagSource="/Images/br.png" />
-
-                    <!-- Oceania -->
-                    <local:CountryTile Grid.Column="1" Grid.Row="0" Title="Australia" FlagSource="/Images/au.png" />
-                    <local:CountryTile Grid.Column="2" Grid.Row="0" Title="New Zealand" FlagSource="/Images/nz.png" />
-                    <local:CountryTile Grid.Column="3" Grid.Row="0" Title="Papua New Guinea" FlagSource="/Images/pg.png" />
-
-                    <!-- East Asia -->
-                    <local:CountryTile Grid.Column="5" Grid.Row="0" Title="China" FlagSource="/Images/cn.png" />
-                    <local:CountryTile Grid.Column="6" Grid.Row="0" Title="Japan" FlagSource="/Images/jp.png" />
-                    <local:CountryTile Grid.Column="7" Grid.Row="0" Title="South Korea" FlagSource="/Images/kr.png" />
-
-                    <!-- West Asia -->
-                    <local:CountryTile Grid.Column="8" Grid.Row="1" Title="India" FlagSource="/Images/in.png" />
-                    <local:CountryTile Grid.Column="8" Grid.Row="2" Title="Pakistan" FlagSource="/Images/pk.png" />
-                    <local:CountryTile Grid.Column="8" Grid.Row="3" Title="Saudi Arabia" FlagSource="/Images/sa.png" />
-
-                    <!-- North africa -->
-                    <local:CountryTile Grid.Column="8" Grid.Row="5" Title="Egypt" FlagSource="/Images/eg.png" />
-                    <local:CountryTile Grid.Column="8" Grid.Row="6" Title="South Africa" FlagSource="/Images/za.png" />
-                    <local:CountryTile Grid.Column="8" Grid.Row="7" Title="Kenya" FlagSource="/Images/ke.png" />
-
-                </Grid>
-            </Grid>
-            <!-- SidePanel-->
-            <Grid Grid.Row="1" Grid.Column="1" Background="#FF232323" Margin="0 50">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-
-                <Image x:Name="Die" Grid.Row="0" Grid.Column="0" Source="/Images/Dice/Dice1.png" Stretch="Fill"/>
-                <Button x:Name="Throw_Dice_Button" Click="Throw_Dice_Button_Click" Grid.Row="1" Grid.Column="0">Throw Dice</Button>
-            </Grid>
         </Grid>
 
 

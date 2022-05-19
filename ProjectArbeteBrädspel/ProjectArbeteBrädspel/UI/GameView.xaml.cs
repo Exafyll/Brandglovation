@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace ProjectArbeteBrädspel
 {
     /// <summary>
-    /// Interaction logic for CountryTile.xaml
+    /// Interaction logic for GameView.xaml
     /// </summary>
-    public partial class CountryTile : UserControl
+    public partial class GameView : UserControl
     {
-        public CountryTile()
+        public GameView()
         {
             InitializeComponent();
         }

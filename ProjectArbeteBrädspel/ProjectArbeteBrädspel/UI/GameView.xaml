@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="ProjectArbeteBrädspel.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectArbeteBrädspel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="400" />
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="BoardContainer" Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="{Binding ElementName=BoardContainer, Path=ActualHeight}" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Board -->
+            <Border Grid.Column="1" Background="{StaticResource BackgroundBrush}" CornerRadius="10" Padding="5">
+                <Grid x:Name="Board_Grid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1.5*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1.5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Scandinavia -->
+                    <local:CountryTile Grid.Column="8" Grid.Row="8" DataContext="{Binding Country0}" />
+                    <local:CountryTile Grid.Column="7" Grid.Row="8" DataContext="{Binding Country1}" />
+                    <local:CountryTile Grid.Column="6" Grid.Row="8" DataContext="{Binding Country2}" />
+                    <local:CountryTile Grid.Column="5" Grid.Row="8" DataContext="{Binding Country3}" />
+
+                    <local:CompanyTile Grid.Column="4" Grid.Row="8" DataContext="{Binding CardTile1}" />
+
+                    <!-- Northen europe -->
+                    <local:CountryTile Grid.Column="3" Grid.Row="8" DataContext="{Binding Country4}" />
+                    <local:CountryTile Grid.Column="2" Grid.Row="8" DataContext="{Binding Country5}" />
+                    <local:CountryTile Grid.Column="1" Grid.Row="8" DataContext="{Binding Country6}" />
+
+                    <local:GrowthTile Grid.Column="0" Grid.Row="8" DataContext="{Binding CardTile2}" />
+
+                    <!-- North America -->
+                    <local:CountryTile Grid.Column="0" Grid.Row="7" DataContext="{Binding Country7}" />
+                    <local:CountryTile Grid.Column="0" Grid.Row="6" DataContext="{Binding Country8}" />
+                    <local:CountryTile Grid.Column="0" Grid.Row="5" DataContext="{Binding Country9}" />
+
+                    <local:MarketTile Grid.Column="0" Grid.Row="4" DataContext="{Binding CardTile3}" />
+
+                    <!-- South America -->
+                    <local:CountryTile Grid.Column="0" Grid.Row="3" DataContext="{Binding Country10}" />
+                    <local:CountryTile Grid.Column="0" Grid.Row="2" DataContext="{Binding Country11}" />
+                    <local:CountryTile Grid.Column="0" Grid.Row="1" DataContext="{Binding Country12}" />
+
+                    <local:GrowthTile Grid.Column="0" Grid.Row="0" DataContext="{Binding CardTile4}" />
+
+                    <!-- Oceania -->
+                    <local:CountryTile Grid.Column="1" Grid.Row="0" DataContext="{Binding Country13}" />
+                    <local:CountryTile Grid.Column="2" Grid.Row="0" DataContext="{Binding Country14}" />
+                    <local:CountryTile Grid.Column="3" Grid.Row="0" DataContext="{Binding Country15}" />
+
+                    <local:CompanyTile Grid.Column="4" Grid.Row="0" DataContext="{Binding CardTile5}" />
+
+                    <!-- East Asia -->
+                    <local:CountryTile Grid.Column="5" Grid.Row="0" DataContext="{Binding Country16}" />
+                    <local:CountryTile Grid.Column="6" Grid.Row="0" DataContext="{Binding Country17}" />
+                    <local:CountryTile Grid.Column="7" Grid.Row="0" DataContext="{Binding Country18}" />
+
+                    <local:GrowthTile Grid.Column="8" Grid.Row="0" DataContext="{Binding CardTile6}" />
+
+                    <!-- West Asia -->
+                    <local:CountryTile Grid.Column="8" Grid.Row="1" DataContext="{Binding Country19}" />
+                    <local:CountryTile Grid.Column="8" Grid.Row="2" DataContext="{Binding Country20}" />
+                    <local:CountryTile Grid.Column="8" Grid.Row="3" DataContext="{Binding Country21}" />
+
+                    <local:MarketTile Grid.Column="8" Grid.Row="4" DataContext="{Binding CardTile7}" />
+
+                    <!-- North africa -->
+                    <local:CountryTile Grid.Column="8" Grid.Row="5" DataContext="{Binding Country22}" />
+                    <local:CountryTile Grid.Column="8" Grid.Row="6" DataContext="{Binding Country23}" />
+                    <local:CountryTile Grid.Column="8" Grid.Row="7" DataContext="{Binding Country24}" />
+
+                    <Button Grid.Column="1" Grid.Row="3" Command="{Binding ColombifyCommand}" Opacity="0"/>
+
+                    <Grid Grid.Column="4" Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="4*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        
+                        <Border Grid.Column="1" Grid.Row="1" Background="{StaticResource ForegroundBrush}" CornerRadius="10" DataContext="{Binding Dice}" Opacity="{Binding Visible}">
+                            <Viewbox Margin="10">
+                                <TextBlock FontWeight="Bold" Foreground="Black" Text="{Binding Value}" />
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+
+                </Grid>
+            </Border>
+        </Grid>
+
+
+        <!-- SidePanel-->
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="ActionButton" Content="Throw Die" Grid.Row="2" Command="{Binding RollDiceCommand}" />
+        </Grid>
+    </Grid>
+</UserControl>

@@ -44,7 +44,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country3 { get { return countries[3]; } }
 
 
-        private BoardTileViewModel cardTile1;
         public BoardTileViewModel CardTile1 { get { return boardTiles[4]; } }
 
 
@@ -56,7 +55,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country6 { get { return countries[6]; } }
 
 
-        private BoardTileViewModel cardTile2;
         public BoardTileViewModel CardTile2 { get { return boardTiles[8]; } }
 
 
@@ -68,7 +66,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country9 { get { return countries[9]; } }
 
 
-        private BoardTileViewModel cardTile3;
         public BoardTileViewModel CardTile3 { get { return boardTiles[12]; } }
 
 
@@ -80,7 +77,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country12 { get { return countries[12]; } }
 
 
-        private BoardTileViewModel cardTile4;
         public BoardTileViewModel CardTile4 { get { return boardTiles[16]; } }
 
 
@@ -92,7 +88,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country15 { get { return countries[15]; } }
 
 
-        private BoardTileViewModel cardTile5;
         public BoardTileViewModel CardTile5 { get { return boardTiles[20]; } }
 
 
@@ -104,7 +99,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country18 { get { return countries[18]; } }
 
 
-        private BoardTileViewModel cardTile6;
         public BoardTileViewModel CardTile6 { get { return boardTiles[24]; } }
 
 
@@ -116,7 +110,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country21 { get { return countries[21]; } }
 
 
-        private BoardTileViewModel cardTile7;
         public BoardTileViewModel CardTile7 { get { return boardTiles[28]; } }
 
 
@@ -250,12 +243,13 @@ namespace ProjectArbeteBrädspel.ViewModel
             for (int i = 0; i < steps; i++)
             {
                 CurrentPlayer.Move();
+                Change(nameof(CurrentPlayer));
                 foreach (BoardTileViewModel tile in boardTiles)
                 {
                     tile.PlayersChanged();
                 }
-                await Task.Delay(750);
                 Change("Countries");
+                await Task.Delay(750);
             }
             Dice.Visible = false;
         }

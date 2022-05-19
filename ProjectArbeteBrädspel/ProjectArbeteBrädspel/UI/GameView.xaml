@@ -101,6 +101,7 @@
 
                     <Button Grid.Column="1" Grid.Row="3" Command="{Binding ColombifyCommand}" Opacity="0"/>
 
+                    <!-- Dice -->
                     <Grid Grid.Column="4" Grid.Row="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -120,20 +121,211 @@
                         </Border>
                     </Grid>
 
+                    <!-- Card Queue -->
+                    <Grid DataContext="{Binding CurrentPlayer}" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="8*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="7*" />
+                            <RowDefinition Height="4*" />
+                        </Grid.RowDefinitions>
+
+                        <ItemsControl Grid.Column="1" Grid.Row="1" ItemsSource="{Binding QueuedCards}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Grid>
+                                        
+                                    </Grid>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border x:Name="QueuedCard" Style="{StaticResource DefaultContainer}" Padding="50" Margin="{Binding Margin}">
+                                        <Viewbox>
+                                            <TextBlock Text="{Binding Title}" Foreground="{StaticResource ForegroundBrush}" FontWeight="Bold" />
+                                        </Viewbox>
+                                    </Border>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding Type}" Value="Growth">
+                                            <Setter TargetName="QueuedCard" Property="Background" Value="{StaticResource GrowthBlueBrush}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Type}" Value="Company">
+                                            <Setter TargetName="QueuedCard" Property="Background" Value="{StaticResource CompanyYellowBrush}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Type}" Value="Market">
+                                            <Setter TargetName="QueuedCard" Property="Background" Value="{StaticResource MarketOrangeBrush}" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+
                 </Grid>
             </Border>
         </Grid>
 
 
         <!-- SidePanel-->
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Row="0" Grid.Column="1" Margin="20 0 0 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="70" />
             </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding Players}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel>
+                                
+                            </StackPanel>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border x:Name="Container" Style="{StaticResource DefaultContainer}" Height="90" Margin="0 0 0 20">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="{Binding ElementName=Container, Path=ActualHeight}" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-            <Button x:Name="ActionButton" Content="Throw Die" Grid.Row="2" Command="{Binding RollDiceCommand}" />
+                                    <Grid Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="6*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="6*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Border x:Name="TurnIndicator" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" Background="{StaticResource HighlightYellowBrush}" CornerRadius="10 0 0 10" Opacity="{Binding IsCurrent}" />
+
+                                        <Border x:Name="PlayerColor" Grid.Column="2" Grid.Row="2" Background="{StaticResource ForegroundBrush}" CornerRadius="{Binding ElementName=PlayerColor, Path=ActualHeight}" />
+                                    </Grid>
+                                    
+                                    
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="6*" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="1" Margin="0 0 20 0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="3*" />
+                                                <RowDefinition Height="2.5*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Viewbox Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                                                <TextBlock Text="{Binding Name}" Foreground="{StaticResource ForegroundBrush}" FontWeight="Bold" />
+                                            </Viewbox>
+                                            <Viewbox Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                <TextBlock Text="{Binding Points}" Foreground="{StaticResource HighlightYellowBrush}" FontWeight="Bold" />
+                                            </Viewbox>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Color}" Value="Red">
+                                    <Setter TargetName="PlayerColor" Property="Background" Value="{StaticResource PlayerRedBrush}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Color}" Value="Grey">
+                                    <Setter TargetName="PlayerColor" Property="Background" Value="{StaticResource PlayerGreyBrush}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Color}" Value="Yellow">
+                                    <Setter TargetName="PlayerColor" Property="Background" Value="{StaticResource PlayerYellowBrush}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Color}" Value="Green">
+                                    <Setter TargetName="PlayerColor" Property="Background" Value="{StaticResource PlayerGreenBrush}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Color}" Value="Blue">
+                                    <Setter TargetName="PlayerColor" Property="Background" Value="{StaticResource PlayerBlueBrush}" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Color}" Value="Purple">
+                                    <Setter TargetName="PlayerColor" Property="Background" Value="{StaticResource PlayerPurpleBrush}" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <!-- Details of Current Player -->
+            <Border x:Name="CurrentPlayer" DataContext="{Binding CurrentPlayer}" Style="{StaticResource DefaultContainer}" Grid.Row="1" Padding="20" Margin="0 0 0 20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Information -->
+                    <Grid x:Name="CurrentDetails" Grid.Row="0" Margin="0 0 0 15" Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="{Binding ElementName=CurrentDetails, Path=ActualHeight}" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border x:Name="CurrentColor" Grid.Column="0">
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Background" Value="{StaticResource ForegroundBrush}" />
+                                    <Setter Property="CornerRadius" Value="{Binding ElementName=CurrentColor, Path=ActualHeight}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Color}" Value="Red">
+                                            <Setter Property="Background" Value="{StaticResource PlayerRedBrush}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Color}" Value="Grey">
+                                            <Setter Property="Background" Value="{StaticResource PlayerGreyBrush}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Color}" Value="Yellow">
+                                            <Setter Property="Background" Value="{StaticResource PlayerYellowBrush}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Color}" Value="Green">
+                                            <Setter Property="Background" Value="{StaticResource PlayerGreenBrush}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Color}" Value="Blue">
+                                            <Setter Property="Background" Value="{StaticResource PlayerBlueBrush}" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Color}" Value="Purple">
+                                            <Setter Property="Background" Value="{StaticResource PlayerPurpleBrush}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+
+                        <Viewbox Grid.Column="1" Margin="10 5 20 5" VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Foreground="{StaticResource ForegroundBrush}" Text="{Binding Name}" FontWeight="Bold" />
+                        </Viewbox>
+
+                        <Viewbox Grid.Column="2" Margin="0 5" VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <TextBlock Foreground="{StaticResource HighlightYellowBrush}" Text="{Binding Points}" FontWeight="Bold" />
+                        </Viewbox>
+                    </Grid>
+
+                    <!-- Investments button -->
+                    <Button x:Name="InvestmentsButton" Style="{StaticResource DefaultButton}" Content="My Investments" Grid.Row="1" />
+                </Grid>
+            </Border>
+
+            <!-- Action Button -->
+            <Button x:Name="ActionButton" Style="{StaticResource DefaultButton}" Content="Throw Die" Grid.Row="2" Command="{Binding RollDiceCommand}" />
         </Grid>
     </Grid>
 </UserControl>

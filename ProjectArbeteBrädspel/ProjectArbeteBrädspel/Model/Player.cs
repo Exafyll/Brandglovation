@@ -45,9 +45,13 @@ namespace ProjectArbeteBrädspel.Model
         /// Queue of Cards the Player has to draw
         /// </summary>
         private List<CardTileModel.CardType> cardQueue;
+        public List<CardTileModel.CardType> CardQueue { get { return cardQueue; } }
 
         private BoardTile? currentTile;
         public BoardTile? CurrentTile { get { return currentTile; } set { currentTile = value; } }
+
+        private bool isCurrent;
+        public bool IsCurrent { get { return isCurrent; } set { isCurrent = value; } }
 
         /// <summary>
         /// Constructor
@@ -60,6 +64,7 @@ namespace ProjectArbeteBrädspel.Model
             points = 50000;
             this.color = color;
             cardQueue = new List<CardTileModel.CardType>();
+            isCurrent = false;
         }
 
         /// <summary>

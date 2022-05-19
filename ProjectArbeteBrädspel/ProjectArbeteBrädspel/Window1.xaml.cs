@@ -24,14 +24,6 @@ namespace ProjectArbeteBrädspel
             InitializeComponent();
 
 
-            var doc = XElement.Parse(tempXml);
-            var target = doc.Elements("Project")
-                    .Where(e => e.Attribute("ID").Value == "2")
-                    .Single();
-
-            target.Attribute("Name").Value = "Project2_Update";
-            doc.Save(Console.Out);
-            Console.WriteLine();
 
         }
     }

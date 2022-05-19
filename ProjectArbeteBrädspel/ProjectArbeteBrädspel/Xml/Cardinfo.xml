@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Carddeck>
+
+  <!--
+  EFFECTS
+  ___________
+  
+  [MARKET]
+	None
+	Allows player to select strategy for mentioned country/countries? very unclear
+  
+  [Company]
+	PointsLoss - point values 100, 200, 300, 500, 1000, 2000, 2500, 3000
+	PointsGain - point values 300, 400, 500, 1000, 2000
+  
+  
+	[Growth]
+	ApplyStrategy - reference type, cost
+	PointsGain
+	MakeInvestment - type, country, cost
+  
+  (For future dev)
+	*	Go to Tile & Points Gain
+	*	Go to Tile - next of type, specific
+
+
+  -->
+
+  <!--COMPANY NEWSLETTER-->
+
+	<CardType type='CN'>
+
+    <Card Id="1">
+     <Description> Our company has recently incurred a loss because of the late delivery of our product to our retailers. The delay in delivery occurred due to conflict in the region." </Description>
+     <Points>100</Points>
+     <Effect>PointLoss</Effect>
+   </Card>
+
+	<Card Id="2">
+		<Description>Our company has employed a consultant to perform market research on some African countries. Pay the consultant for his thorough market analysis.</Description>
+		<Points>200</Points>
+		<Effect>PointLoss</Effect>
+	</Card>
+		
+	<Card Id="3">
+		<Description>Our company has recently introduced environmentally friendly production system. Introducing such system incurred some additional cost for the company. </Description>
+		<Points>500</Points>
+    <Effect>PointLoss</Effect>
+	</Card>
+		
+	<Card Id="4">
+		<Description>Our company’s new OEM manufacturer in China enabled us to save a lot of currency as it delivered cheap components to us. </Description>
+		<Points>300</Points>
+		<Effect>PointGain</Effect>
+	</Card>
+
+    <!--
+	<Card Id="">
+		<Description></Description>
+		<Points></Points>
+		<Effect></Effect>
+	</Card>
+  -->
+
+	</CardType>
+	
+	
+	<!--GROWTH STRATEGIES-->
+	
+	
+	<CardType type="GS">
+
+		<Card Id="1">
+			<Description>Your company’s sale is decreasing in competition with the other similar offerings. Your option is either to bring an improved product or develop a completely new offering. Since creating new offering demands extensive financial support and the path is uncertain, your consultant suggests you consCardering an incremental innovation, take it slow and make changes over time. Spend 200p for this innovation project.</Description>
+			<Points>200</Points>
+			<Effect>PointLoss</Effect>
+		</Card>
+
+		<Card Id="2">
+			<Description>Your company’s sale is decreasing in competition due to sudden change in the trends in the market. Buyers are moving to environmentally friendly solutions. Perhaps it is time that you consider creating an environmentally friendly offering by choosing a substantial and transformational innovation. Spend 1000p for this transformational innovation project.</Description>
+			<Points>1000</Points>
+			<Effect>PointLoss</Effect>
+		</Card>
+
+		<Card Id="3">
+			<Description>Your sales representatives have received complain from your customers. Your customers are not having pleasant experience while shopping your products online. Your company needs to offer a 24/7 digital customer service centre so that problems like this can be solved on time. Invest 500p in this project.</Description>
+			<Points>500</Points>
+			<Effect>PointLoss</Effect>
+		</Card>
+
+		<Card Id="4">
+			<Description>Your company’s sale is decreasing in competition. It is time for you to extend your product line by bringing in new and complimentary products. Check if you need to improve or bring in new flavours in your product. However, be aware of the cost, new flavour should not add too much burden on the customers. Spend 1000p for new line extension.</Description>
+			<Points>1000</Points>
+			<Effect>PointLoss</Effect>
+		</Card>
+
+    <!--
+		<Card Id="">
+			<Description></Description>
+			<Points></Points>
+			<Effect></Effect>
+		</Card>
+		-->
+  </CardType>
+  
+  
+	<!--MARKET INFORMATION-->
+	
+	
+	<CardType Type="MI">
+	
+		<Card Id="1">
+			<Description>Labour cost is increasing in China. It is no longer cheaper to invest in China like it used to be earlier. Companies are considering moving to other Asian countries and to some African countries where labour cost is lower in comparison with China.</Description>
+			<Effect></Effect>
+		</Card>
+
+		<Card Id="2">
+			<Description>Sales in department stores rose for the first time this year in July, 2019 in the UK. The Office for National Statistics said, with data showing an unexpected rise in total retail sales in the month in comparison with the last three months. However, the growth is not significant. On the other hand, internet sales recorded a 6.9% jump in the month - the biggest rise for three years. </Description>
+			<Effect></Effect>
+		</Card>
+		
+		<Card Id="3">
+			<Description>
+				As consumers become ever more concerned about environmental and ethical issues, pioneers in the global denim industry are cleaning up its act. “Anybody can walk in here, even without an appointment," says Han Ates, the founder of the London-based small business. "Through that we create transparency." By opening up its doors, Blackhorse Lane Ateliers is able to show potential customers that its factory is clean, the 20 employees are happy, and that the jeans are worth keeping - rather than throwing away at the end of each season.</Description>
+			<Effect></Effect>
+		</Card>
+		
+		<Card Id="4">
+			<Description>In many denim mills and jeans factories the used water - which contains the dye, plus bleach and other chemicals - is simply released as waste water. Thankfully a growing number of producers are now eliminating waste water altogether. Saitex International, a jeans manufacturer based in Vietnam, is one such business, now recycles 98% of the water it uses. For the remaining 2% it has an evaporation system, making it a zero discharge facility. "Morally it pushed us to start looking at water as a very valuable resource."</Description>
+			<Effect></Effect>
+		</Card>
+
+    <!--
+		<Card Id="">
+			<Description></Description>
+			<Effect></Effect>
+		</Card>
+			-->
+	</CardType>
+
+</Carddeck>

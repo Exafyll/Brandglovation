@@ -41,6 +41,9 @@ namespace ProjectArbeteBrädspel.Model
         private Dice dice;
         public Dice Dice { get { return dice; } }
 
+        private GameCardHandler gameCardHandler;
+        public GameCardHandler GameCardHandler { get { return gameCardHandler; } }
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -158,6 +161,8 @@ namespace ProjectArbeteBrädspel.Model
             {
                 boardTiles[0].PlayerEnter(player);
             }
+
+            gameCardHandler = new GameCardHandler();
         }
 
         public void MakeCurrent(Player player)

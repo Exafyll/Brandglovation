@@ -30,7 +30,7 @@ namespace ProjectArbeteBrädspel.Model
         /// The Player currently taking their turn
         /// </summary>
         private Player currentPlayer;
-        public Player CurrentPlayer { get { return currentPlayer; } }
+        public Player CurrentPlayer { get { return players.Where(x => x.IsCurrent == true).FirstOrDefault(); } }
 
         private BoardTile[] boardTiles;
         public BoardTile[] BoardTiles { get { return boardTiles; } }
@@ -52,6 +52,7 @@ namespace ProjectArbeteBrädspel.Model
             turnCount = 0;
             this.players = players;
             currentPlayer = players[0];
+            MakeCurrent(players[0]);
 
             dice = new Dice();
 
@@ -157,6 +158,16 @@ namespace ProjectArbeteBrädspel.Model
             {
                 boardTiles[0].PlayerEnter(player);
             }
+        }
+
+        public void MakeCurrent(Player player)
+        {
+            currentPlayer = player;
+            foreach (Player p in Players)
+            {
+                p.IsCurrent = false;
+            }
+            player.IsCurrent = true;
         }
     }
 }

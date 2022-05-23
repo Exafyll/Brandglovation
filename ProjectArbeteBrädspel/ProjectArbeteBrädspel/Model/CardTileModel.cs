@@ -41,6 +41,7 @@ namespace ProjectArbeteBrädspel.Model
         protected override void OnPlayerEnter(Player player)
         {
             player.QueueCard(cardType);
+            System.Diagnostics.Debug.WriteLine(Type.ToString() + " Card queued for " + player.Name);
         }
     }
 }

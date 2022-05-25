@@ -121,6 +121,9 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country24 { get { return countries[24]; } }
         #endregion
 
+        // Testing Purposes Only
+        public LargePopupViewModel TestPopup { get; }
+
         public GameViewModel(Game game)
         {
             this.game = game;
@@ -133,6 +136,8 @@ namespace ProjectArbeteBrädspel.ViewModel
 
             countries = new ObservableCollection<CountryViewModel>();
             boardTiles = new ObservableCollection<BoardTileViewModel>();
+
+            #region Countries
 
             countries.Add(new CountryViewModel(game.Countries[0]));
             countries.Add(new CountryViewModel(game.Countries[1]));
@@ -214,11 +219,15 @@ namespace ProjectArbeteBrädspel.ViewModel
             boardTiles.Add(Country23);
             boardTiles.Add(Country24);
 
+            #endregion
+
             ColombifyCommand = new RelayCommand(Colombify);
 
             Dice = new DiceViewModel(game.Dice);
 
             RollDiceCommand = new RelayCommand(RollDice);
+
+            TestPopup = new LargePopupViewModel(LargePopupViewModel.PopupColor.MarketOrange, "Market Information");
         }
 
         private void Colombify()

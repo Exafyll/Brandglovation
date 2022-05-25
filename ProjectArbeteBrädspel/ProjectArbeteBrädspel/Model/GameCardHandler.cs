@@ -14,7 +14,7 @@ namespace ProjectArbeteBrädspel.Model
 
         public GameCardHandler()
         {
-            // Company Cards
+            #region Company Cards
             companyCards.Add(new GameCard(CardTileModel.CardType.
                 Company,
                 "Our company has recently incurred a loss because of the late delivery of our product to our retailers. The delay in delivery occurred due to conflict in the region.",
@@ -39,9 +39,9 @@ namespace ProjectArbeteBrädspel.Model
                 "PointGain",
                 300,
                 ""));
+            #endregion
 
-            // Market Cards
-
+            #region Market Cards
             marketCards.Add(new GameCard(CardTileModel.CardType.
                 Market,
                 "Labour cost is increasing in China. It is no longer cheaper to invest in China like it used to be earlier. Companies are considering moving to other Asian countries and to some African countries where labour cost is lower in comparison with China.",
@@ -66,8 +66,9 @@ namespace ProjectArbeteBrädspel.Model
                 "",
                 0,
                 ""));
+            #endregion
 
-            // Growth Cards
+            #region Growth Cards
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
                 "Your company’s sale is decreasing in competition with the other similar offerings. Your option is either to bring an improved product or develop a completely new offering. Since creating new offering demands extensive financial support and the path is uncertain, your consultant suggests you consCardering an incremental innovation, take it slow and make changes over time. Spend 200p for this innovation project.",
@@ -92,6 +93,7 @@ namespace ProjectArbeteBrädspel.Model
                 "PointLoss",
                 1000,
                 ""));
+            #endregion
 
         }
 

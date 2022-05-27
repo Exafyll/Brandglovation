@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,18 +15,18 @@ namespace ProjectArbeteBrädspel.ViewModel
 
         public string Name { get { return player.Name; } }
 
-        public int Points { get { return player.Points; } }
+        public string Points { get { return player.Points + "p"; } }
 
         public Player.PlayerColor Color { get { return player.Color; } }
 
         public bool IsCurrent
         {
             get { return player.IsCurrent; }
-            set
-            {
-                player.IsCurrent = value;
-                Change("IsCurrent");
-            }
+            //set
+            //{
+            //    player.IsCurrent = value;
+            //    Change("IsCurrent");
+            //}
         }
 
         public ObservableCollection<QueuedCardViewModel> QueuedCards
@@ -46,12 +47,29 @@ namespace ProjectArbeteBrädspel.ViewModel
         public PlayerViewModel(Player player)
         {
             this.player = player;
+            this.player.PropertyChanged += Player_PropertyChanged;
         }
 
-        public void Move()
+        private void Player_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            player.Move();
-            Change("QueuedCards");
+            switch(e.PropertyName)
+            {
+                case nameof(player.IsCurrent):
+                    Change(nameof(IsCurrent));
+                    break;
+                case nameof(player.CardQueue):
+                    Change(nameof(QueuedCards));
+                    break;
+                case nameof(player.Points):
+                    Change(nameof(Points));
+                    break;
+            }
         }
+
+        //public void Move()
+        //{
+        //    player.Move();
+        //    Change("QueuedCards");
+        //}
     }
 }

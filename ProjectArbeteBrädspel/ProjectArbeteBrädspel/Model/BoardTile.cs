@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.Model
 {
-    public class BoardTile
+    public class BoardTile : Model
     {
         /// <summary>
         /// The Players currently on this Tile
@@ -38,6 +38,10 @@ namespace ProjectArbeteBrädspel.Model
                 player.CurrentTile.PlayerLeave(player);
             }
             player.CurrentTile = this;
+
+            // Notify the ViewModel
+            Change(nameof(Players));
+
             OnPlayerEnter(player);
         }
 
@@ -48,6 +52,8 @@ namespace ProjectArbeteBrädspel.Model
         public void PlayerLeave(Player player)
         {
             players.Remove(player);
+
+            Change(nameof(Players));
         }
 
         /// <summary>

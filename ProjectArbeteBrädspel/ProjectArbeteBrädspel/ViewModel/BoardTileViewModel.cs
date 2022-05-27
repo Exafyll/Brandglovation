@@ -28,11 +28,22 @@ namespace ProjectArbeteBrädspel.ViewModel
         public BoardTileViewModel(BoardTile boardTile)
         {
             this.boardTile = boardTile;
+            this.boardTile.PropertyChanged += BoardTile_PropertyChanged;
         }
 
-        public void PlayersChanged()
+        private void BoardTile_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            Change("Players");
+            switch (e.PropertyName)
+            {
+                case nameof(boardTile.Players):
+                    Change(nameof(Players));
+                    break;
+            }
         }
+
+        //public void PlayersChanged()
+        //{
+        //    Change("Players");
+        //}
     }
 }

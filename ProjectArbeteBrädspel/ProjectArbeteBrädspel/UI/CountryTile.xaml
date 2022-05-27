@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              x:Name="root"
              d:DesignHeight="510" d:DesignWidth="350">
-    <Border Background="{StaticResource ForegroundBrush}" CornerRadius="6" Margin="2.5">
+    <Border Background="{StaticResource ForegroundBrush}" CornerRadius="6" Margin="2.5" ToolTip="{Binding Name}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*" />

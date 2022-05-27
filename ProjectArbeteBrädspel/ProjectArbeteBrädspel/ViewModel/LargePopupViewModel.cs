@@ -19,7 +19,8 @@ namespace ProjectArbeteBrädspel.ViewModel
             PlayerYellow, 
             PlayerGreen,
             PlayerBlue, 
-            PlayerPurple
+            PlayerPurple, 
+            Default
         }
 
         private PopupColor color;
@@ -64,20 +65,15 @@ namespace ProjectArbeteBrädspel.ViewModel
             }
         }
 
-        public ICommand ToggleVisibilityCommand { get; }
+        public ICommand Command { get; }
 
-        public LargePopupViewModel(PopupColor color, string title)
+        public LargePopupViewModel(PopupColor color, string title, ICommand command)
         {
             this.color = color;
             this.title = title;
-            isVisible = true;
+            isVisible = false;
 
-            ToggleVisibilityCommand = new RelayCommand(ToggleVisibility);
-        }
-
-        public void ToggleVisibility()
-        {
-            IsVisible = !IsVisible;
+            Command = command;
         }
     }
 }

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <local:LargePopup Panel.ZIndex="1" DataContext="{Binding TestPopup}" />
+        <local:GameCardPopup Panel.ZIndex="1" DataContext="{Binding DrawnCard}" />
         
         <!-- Game Grid -->
         <Grid Background="{StaticResource ThemeBackgroundBrush}">
@@ -119,9 +119,214 @@
                             </Grid.RowDefinitions>
 
                             <Border Grid.Column="1" Grid.Row="1" Background="{StaticResource ForegroundBrush}" CornerRadius="10" DataContext="{Binding Dice}" Opacity="{Binding Visible}">
-                                <Viewbox Margin="10">
+                                <!--<Viewbox Margin="10">
                                     <TextBlock FontWeight="Bold" Foreground="Black" Text="{Binding Value}" />
-                                </Viewbox>
+                                </Viewbox>-->
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.25*" />
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="1.25*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1.25*" />
+                                        <RowDefinition Height="3*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="3*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="3*" />
+                                        <RowDefinition Height="1.25*" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- #region Dice Dots -->
+                                    <Border x:Name="DotOne" Grid.Column="1" Grid.Row="1" Background="Black" CornerRadius="{Binding ElementName=DotOne, Path=ActualHeight}">
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="1">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="2">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="3">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="4">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="5">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="6">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border x:Name="DotTwo" Grid.Column="1" Grid.Row="3" Background="Black" CornerRadius="{Binding ElementName=DotTwo, Path=ActualHeight}">
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="1">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="2">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="3">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="4">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="5">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="6">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border x:Name="DotThree" Grid.Column="1" Grid.Row="5" Background="Black" CornerRadius="{Binding ElementName=DotThree, Path=ActualHeight}">
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="1">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="2">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="3">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="4">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="5">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="6">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border x:Name="DotFour" Grid.Column="3" Grid.Row="3" Background="Black" CornerRadius="{Binding ElementName=DotFour, Path=ActualHeight}">
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="1">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="2">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="3">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="4">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="5">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="6">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border x:Name="DotFive" Grid.Column="5" Grid.Row="1" Background="Black" CornerRadius="{Binding ElementName=DotFive, Path=ActualHeight}">
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="1">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="2">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="3">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="4">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="5">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="6">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border x:Name="DotSix" Grid.Column="5" Grid.Row="3" Background="Black" CornerRadius="{Binding ElementName=DotSix, Path=ActualHeight}">
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="1">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="2">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="3">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="4">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="5">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="6">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <Border x:Name="DotSeven" Grid.Column="5" Grid.Row="5" Background="Black" CornerRadius="{Binding ElementName=DotSeven, Path=ActualHeight}">
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Value}" Value="1">
+                                                        <Setter Property="Opacity" Value="0" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="2">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="3">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="4">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="5">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Value}" Value="6">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                    <!-- #endregion -->
+                                </Grid>
                             </Border>
                         </Grid>
 
@@ -339,7 +544,18 @@
                 </Border>
 
                 <!-- Action Button -->
-                <Button x:Name="ActionButton" Style="{StaticResource DefaultButton}" Content="Throw Die" Grid.Row="2" Command="{Binding RollDiceCommand}" />
+                <Button x:Name="ActionButton" Content="{Binding Stage}" Grid.Row="2" Command="{Binding ProgressTurnCommand}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+                                    <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
         </Grid>
 

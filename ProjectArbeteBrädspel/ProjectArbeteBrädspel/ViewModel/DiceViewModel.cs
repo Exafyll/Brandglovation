@@ -31,14 +31,17 @@ namespace ProjectArbeteBrädspel.ViewModel
         {
             visible = false;
             this.dice = dice;
+            this.dice.PropertyChanged += Dice_PropertyChanged;
         }
 
-        public int Roll()
+        private void Dice_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            Visible = true;
-            int val = dice.Roll();
-            Change("Value");
-            return val;
+            switch (e.PropertyName)
+            {
+                case nameof(dice.Value):
+                    Change(nameof(Value));
+                    break;
+            }
         }
     }
 }

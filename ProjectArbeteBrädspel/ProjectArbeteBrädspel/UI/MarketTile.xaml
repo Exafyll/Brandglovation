@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ProjectArbeteBrädspel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border Background="{StaticResource MarketOrangeBrush}" CornerRadius="6" Margin="2.5">
+    <Border Background="{StaticResource MarketOrangeBrush}" CornerRadius="6" Margin="2.5" ToolTip="Market Information">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.5*" />

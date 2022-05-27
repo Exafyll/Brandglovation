@@ -41,7 +41,7 @@
                         <RowDefinition Height="5*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Border x:Name="Piece" Grid.Column="1" Grid.Row="1" Background="{StaticResource BackgroundBrush}" Width="{Binding ElementName=Piece, Path=ActualHeight}" CornerRadius="{Binding ElementName=Piece, Path=ActualHeight}" />
+                    <Border x:Name="Piece" Grid.Column="1" Grid.Row="1" Background="{StaticResource BackgroundBrush}" Width="{Binding ElementName=Piece, Path=ActualHeight}" CornerRadius="{Binding ElementName=Piece, Path=ActualHeight}" ToolTip="{Binding Name}" />
                 </Grid>
 
                 <DataTemplate.Triggers>

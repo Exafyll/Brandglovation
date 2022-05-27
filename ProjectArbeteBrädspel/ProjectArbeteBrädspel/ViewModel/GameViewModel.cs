@@ -52,11 +52,11 @@ namespace ProjectArbeteBrädspel.ViewModel
 
         public DiceViewModel Dice { get; }
 
-        public ICommand ColombifyCommand { get; }
+        public RelayCommand ColombifyCommand { get; }
 
-        public ICommand ProgressTurnCommand { get; }
+        public RelayCommand ProgressTurnCommand { get; }
 
-        public ICommand ApplyCardCommand { get; }
+        public RelayCommand CheeseProgressTurnCommand { get; }
 
         #region Tiles
         // SCANDINAVIA
@@ -252,9 +252,9 @@ namespace ProjectArbeteBrädspel.ViewModel
 
             ProgressTurnCommand = new RelayCommand(ProgressTurn, ProgressTurn_CanExecute);
 
-            ApplyCardCommand = new RelayCommand(ProgressTurn);
+            CheeseProgressTurnCommand = new RelayCommand(ProgressTurn);
 
-            DrawnCard = new GameCardViewModel(game.GameCardHandler, ApplyCardCommand);
+            DrawnCard = new GameCardViewModel(game.GameCardHandler, CheeseProgressTurnCommand);
         }
 
         private void Game_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -271,6 +271,9 @@ namespace ProjectArbeteBrädspel.ViewModel
                     {
                         Dice.Visible = false;
                     }
+                    
+                    ProgressTurnCommand.RaiseCanExecuteChanged();
+
                     break;
                 case nameof(game.CurrentPlayer):
                     Change(nameof(CurrentPlayer));

@@ -9,11 +9,7 @@ namespace ProjectArbeteBrädspel.ViewModel
 {
     public class RelayCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
+        public event EventHandler CanExecuteChanged;
 
         private Action action;
         private Func<bool>? canExecuteEvaluator;
@@ -36,6 +32,10 @@ namespace ProjectArbeteBrädspel.ViewModel
             {
                 return canExecuteEvaluator.Invoke();
             }
+        }
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, new EventArgs());
         }
 
         public void Execute(object? parameter)

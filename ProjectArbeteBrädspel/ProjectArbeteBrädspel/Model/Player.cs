@@ -140,23 +140,17 @@ namespace ProjectArbeteBrädspel.Model
 
         List<InvestmentHandler> Investments = new List<InvestmentHandler>();
 
-        public void Invest()
+        public void Invest(Country country)
         {
-            var list = Investments.FirstOrDefault(o => o.Country == country);
-            if (list != null)
+            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
+            if (handler == null)
             {
-                Investments.Add(new InvestmentHandler(Country));
-
+                Investments.Add(new InvestmentHandler(country));
+                handler = Investments.Last();
             }
-            else
-            {
-
-            }
+            LosePoints(handler.CreateInvestment());
         }
-        public void ApplyStrategy()
-        {
 
-        }
 
 
     }

@@ -31,24 +31,6 @@
         </Style>
     </Window.Resources>
     <Grid Margin="0" Background="{StaticResource ThemeBackgroundBrush}">
-
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="40" />
-            </Grid.ColumnDefinitions>
-
-
-            <local:GameView Grid.Row="1" Grid.Column="1" DataContext="{Binding GameViewModel}" />
-
-        </Grid>
-
-
+        <local:GameView Grid.Row="1" Grid.Column="1" DataContext="{Binding GameViewModel}" />
     </Grid>
 </Window>

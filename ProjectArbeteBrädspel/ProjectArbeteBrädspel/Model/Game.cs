@@ -39,7 +39,15 @@ namespace ProjectArbeteBrädspel.Model
         /// The current turn
         /// </summary>
         private int turn;
-        public int Turn { get { return turn; } set { turn = value; } }
+        public int Turn 
+        { 
+            get { return turn; } 
+            set 
+            { 
+                turn = value;
+                Change(nameof(Turn));
+            } 
+        }
 
         /// <summary>
         /// The Players taking part in the Game
@@ -84,7 +92,7 @@ namespace ProjectArbeteBrädspel.Model
         public Game(int turnLimit, List<Player> players)
         {
             this.turnLimit = turnLimit;
-            turn = 0;
+            turn = 1;
             turnStage = TurnStage.RollDice;
             this.players = players;
             MakeCurrent(players[0]);
@@ -234,6 +242,7 @@ namespace ProjectArbeteBrädspel.Model
             else
             {
                 MakeCurrent(Players.First());
+                Turn++;
             }
         }
 
@@ -295,7 +304,6 @@ namespace ProjectArbeteBrädspel.Model
 
                     // End the turn
                     NextPlayer();
-                    Turn++;
                     Stage = TurnStage.RollDice;
 
                     break;

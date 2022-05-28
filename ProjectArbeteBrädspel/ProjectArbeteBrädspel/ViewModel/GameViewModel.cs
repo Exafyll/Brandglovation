@@ -36,6 +36,8 @@ namespace ProjectArbeteBrädspel.ViewModel
             }
         }
 
+        public string TurnState { get { return "Turn " + game.Turn + "/" + game.TurnLimit; } }
+
         private ObservableCollection<PlayerViewModel> players;
         public ObservableCollection<PlayerViewModel> Players { get { return players; } }
 
@@ -274,6 +276,9 @@ namespace ProjectArbeteBrädspel.ViewModel
                     
                     ProgressTurnCommand.RaiseCanExecuteChanged();
 
+                    break;
+                case nameof(game.Turn):
+                    Change(nameof(TurnState));
                     break;
                 case nameof(game.CurrentPlayer):
                     Change(nameof(CurrentPlayer));

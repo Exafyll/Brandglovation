@@ -33,7 +33,7 @@ namespace ProjectArbeteBrädspel
             players = new List<Player>();
             players.Add(new Player("Player One", Player.PlayerColor.Red));
             players.Add(new Player("Player Two", Player.PlayerColor.Purple));
-            game = new Game(50, players);
+            game = new Game(100, players);
             this.DataContext = new GameWindowViewModel(game);
         }
 

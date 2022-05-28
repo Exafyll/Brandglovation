@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.Model
 {
-    public class Dice
+    public class Dice : Model
     {
         private Random random;
         public enum DiceValue
@@ -51,6 +51,8 @@ namespace ProjectArbeteBrädspel.Model
         public int Roll()
         {
             value = (DiceValue)random.Next(0, 6);
+            Change(nameof(Value));
+
             System.Diagnostics.Debug.WriteLine("Dice Rolled, Value set to " + Value);
             return Value;
         }

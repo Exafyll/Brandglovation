@@ -13,6 +13,31 @@ namespace ProjectArbeteBrädspel.ViewModel
     {
         private Game game;
 
+        public string Stage
+        {
+            get
+            {
+                switch (game.Stage)
+                {
+                    case Game.TurnStage.RollDice:
+                        return "Roll Dice";
+                    case Game.TurnStage.Movement:
+                        return "Player Moving";
+                    case Game.TurnStage.Draw:
+                        return "Draw Card";
+                    case Game.TurnStage.Apply:
+                        return "Please Wait";
+                    case Game.TurnStage.Invest:
+                        return "Make Investment";
+                    case Game.TurnStage.End:
+                        return "End Turn";
+                    default: return "Oops";
+                }
+            }
+        }
+
+        public string TurnState { get { return "Turn " + game.Turn + "/" + game.TurnLimit; } }
+
         private ObservableCollection<PlayerViewModel> players;
         public ObservableCollection<PlayerViewModel> Players { get { return players; } }
 
@@ -29,9 +54,11 @@ namespace ProjectArbeteBrädspel.ViewModel
 
         public DiceViewModel Dice { get; }
 
-        public ICommand ColombifyCommand { get; }
+        public RelayCommand ColombifyCommand { get; }
 
-        public ICommand RollDiceCommand { get; }
+        public RelayCommand ProgressTurnCommand { get; }
+
+        public RelayCommand CheeseProgressTurnCommand { get; }
 
         #region Tiles
         // SCANDINAVIA
@@ -121,9 +148,12 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country24 { get { return countries[24]; } }
         #endregion
 
+        public GameCardViewModel DrawnCard { get; }
+
         public GameViewModel(Game game)
         {
             this.game = game;
+            game.PropertyChanged += Game_PropertyChanged;
 
             players = new ObservableCollection<PlayerViewModel>();
             foreach (Player player in game.Players)
@@ -133,6 +163,8 @@ namespace ProjectArbeteBrädspel.ViewModel
 
             countries = new ObservableCollection<CountryViewModel>();
             boardTiles = new ObservableCollection<BoardTileViewModel>();
+
+            #region Countries
 
             countries.Add(new CountryViewModel(game.Countries[0]));
             countries.Add(new CountryViewModel(game.Countries[1]));
@@ -214,13 +246,49 @@ namespace ProjectArbeteBrädspel.ViewModel
             boardTiles.Add(Country23);
             boardTiles.Add(Country24);
 
+            #endregion
+
             ColombifyCommand = new RelayCommand(Colombify);
 
             Dice = new DiceViewModel(game.Dice);
 
-            RollDiceCommand = new RelayCommand(RollDice);
+            ProgressTurnCommand = new RelayCommand(ProgressTurn, ProgressTurn_CanExecute);
+
+            CheeseProgressTurnCommand = new RelayCommand(ProgressTurn);
+
+            DrawnCard = new GameCardViewModel(game.GameCardHandler, CheeseProgressTurnCommand);
         }
 
+        private void Game_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(game.Stage):
+                    Change(nameof(Stage));
+                    if (game.Stage == Game.TurnStage.Movement)
+                    {
+                        Dice.Visible = true;
+                    }
+                    else
+                    {
+                        Dice.Visible = false;
+                    }
+                    
+                    ProgressTurnCommand.RaiseCanExecuteChanged();
+
+                    break;
+                case nameof(game.Turn):
+                    Change(nameof(TurnState));
+                    break;
+                case nameof(game.CurrentPlayer):
+                    Change(nameof(CurrentPlayer));
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Easter Egg method. Sets the visual for all Countries to Colombia
+        /// </summary>
         private void Colombify()
         {
             foreach (CountryViewModel country in countries)
@@ -230,30 +298,17 @@ namespace ProjectArbeteBrädspel.ViewModel
             Change("Countries");
         }
 
-        private void RollDice()
+        /// <summary>
+        /// Progress through the turn
+        /// </summary>
+        private void ProgressTurn()
         {
-            int value = Dice.Roll();
-            Change("Dice");
-            MovePlayer(value);
+            game.ProgressTurn();
         }
 
-        private async void MovePlayer(int steps)
+        public bool ProgressTurn_CanExecute()
         {
-            await Task.Delay(1000);
-            for (int i = 0; i < steps; i++)
-            {
-                CurrentPlayer.Move();
-                Change(nameof(CurrentPlayer));
-                foreach (BoardTileViewModel tile in boardTiles)
-                {
-                    tile.PlayersChanged();
-                }
-                Change("Countries");
-                await Task.Delay(750);
-            }
-            Dice.Visible = false;
+            return game.Stage != Game.TurnStage.Movement && game.Stage != Game.TurnStage.Apply;
         }
-
-
     }
 }

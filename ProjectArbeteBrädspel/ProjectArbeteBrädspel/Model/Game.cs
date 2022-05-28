@@ -6,8 +6,29 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.Model
 {
-    public class Game
+    public class Game : Model
     {
+        public enum TurnStage
+        {
+            RollDice, // The player rolls the dice
+            Movement, // Waiting for the player movement to finish
+            Draw, // The player draws any queued cards
+            Apply, // The drawn card's effect is applied
+            Invest, // The player invests (or not)
+            End // The turn finishes
+        }
+
+        private TurnStage turnStage;
+        public TurnStage Stage 
+        { 
+            get { return turnStage; } 
+            set 
+            { 
+                turnStage = value;
+                Change(nameof(Stage));
+            } 
+        }
+
         /// <summary>
         /// The maximum amount of turns
         /// </summary>
@@ -17,8 +38,16 @@ namespace ProjectArbeteBrädspel.Model
         /// <summary>
         /// The current turn
         /// </summary>
-        private int turnCount;
-        public int TurnCount { get { return turnCount; } }
+        private int turn;
+        public int Turn 
+        { 
+            get { return turn; } 
+            set 
+            { 
+                turn = value;
+                Change(nameof(Turn));
+            } 
+        }
 
         /// <summary>
         /// The Players taking part in the Game
@@ -29,35 +58,48 @@ namespace ProjectArbeteBrädspel.Model
         /// <summary>
         /// The Player currently taking their turn
         /// </summary>
-        private Player currentPlayer;
         public Player CurrentPlayer { get { return players.Where(x => x.IsCurrent == true).FirstOrDefault(); } }
 
-        private BoardTile[] boardTiles;
+        /// <summary>
+        /// The tiles on the game board
+        /// </summary>
+        private readonly BoardTile[] boardTiles;
         public BoardTile[] BoardTiles { get { return boardTiles; } }
 
-        private Country[] countries;
+        /// <summary>
+        /// The Countries in the game. Subset/Subclasses of BoardTiles/BoardTile
+        /// </summary>
+        private readonly Country[] countries;
         public Country[] Countries { get { return countries; } }
 
-        private Dice dice;
+        /// <summary>
+        /// It's a dice. What do you want me to say?
+        /// </summary>
+        private readonly Dice dice;
         public Dice Dice { get { return dice; } }
 
-        private GameCardHandler gameCardHandler;
+        /// <summary>
+        /// Handler for the Game Cards (Growth strategies, Market information, etc)
+        /// </summary>
+        private readonly GameCardHandler gameCardHandler;
         public GameCardHandler GameCardHandler { get { return gameCardHandler; } }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="turnLimit"></param>
-        /// <param name="players"></param>
+        /// <param name="turnLimit">The maximum amount of turns the game is allowed to take</param>
+        /// <param name="players">The participating Players</param>
         public Game(int turnLimit, List<Player> players)
         {
             this.turnLimit = turnLimit;
-            turnCount = 0;
+            turn = 1;
+            turnStage = TurnStage.RollDice;
             this.players = players;
-            currentPlayer = players[0];
             MakeCurrent(players[0]);
 
             dice = new Dice();
+
+            #region Country Instantiation
 
             countries = new Country[25]
             {
@@ -87,6 +129,10 @@ namespace ProjectArbeteBrädspel.Model
                 new Country("South Africa", "/Images/za.png"),
                 new Country("Kenya", "/Images/ke.png")
             };
+
+            #endregion
+
+            #region Board Tile Instantiation
 
             boardTiles = new BoardTile[32]
             {
@@ -124,6 +170,10 @@ namespace ProjectArbeteBrädspel.Model
                 countries[24]
             };
 
+            #endregion
+
+            #region Board Tile Chaining
+
             boardTiles[0].NextTile = boardTiles[1];
             boardTiles[1].NextTile = boardTiles[2];
             boardTiles[2].NextTile = boardTiles[3];
@@ -157,6 +207,8 @@ namespace ProjectArbeteBrädspel.Model
             boardTiles[30].NextTile = boardTiles[31];
             boardTiles[31].NextTile = boardTiles[0];
 
+            #endregion
+
             foreach (Player player in Players)
             {
                 boardTiles[0].PlayerEnter(player);
@@ -165,14 +217,97 @@ namespace ProjectArbeteBrädspel.Model
             gameCardHandler = new GameCardHandler();
         }
 
+        /// <summary>
+        /// Set the current player
+        /// </summary>
+        /// <param name="player">The player to make current</param>
         public void MakeCurrent(Player player)
         {
-            currentPlayer = player;
             foreach (Player p in Players)
             {
                 p.IsCurrent = false;
             }
             player.IsCurrent = true;
+
+            //Notify the ViewModel
+            Change(nameof(CurrentPlayer));
+        }
+
+        public void NextPlayer()
+        {
+            if (CurrentPlayer != Players.Last())
+            {
+                MakeCurrent(Players[Players.IndexOf(CurrentPlayer) + 1]);
+            }
+            else
+            {
+                MakeCurrent(Players.First());
+                Turn++;
+            }
+        }
+
+        /// <summary>
+        /// Move the current player
+        /// </summary>
+        /// <param name="steps">The number of steps to move</param>
+        private async void MovePlayer(int steps)
+        {
+            Stage = TurnStage.Movement;
+            await Task.Delay(1000);
+            for (int i = 0; i < steps; i++)
+            {
+                CurrentPlayer.Move();
+                await Task.Delay(750);
+            }
+            if (CurrentPlayer.CardQueue.Count > 0)
+            {
+                Stage = TurnStage.Draw;
+            }
+            else
+            {
+                Stage = TurnStage.Invest;
+            }
+        }
+
+        /// <summary>
+        /// Progress further through the turn
+        /// </summary>
+        public void ProgressTurn()
+        {
+            switch (turnStage)
+            {
+                case TurnStage.RollDice:
+                    MovePlayer(Dice.Roll());
+                    break;
+                case TurnStage.Draw:
+                    gameCardHandler.DrawCard(CurrentPlayer.DrawCard());
+                    Stage = TurnStage.Apply;
+                    break;
+                case TurnStage.Apply:
+
+                    gameCardHandler.ApplyEffect(CurrentPlayer);
+
+                    if (CurrentPlayer.CardQueue.Count > 0)
+                    {
+                        Stage = TurnStage.Draw;
+                    }
+                    else
+                    {
+                        Stage = TurnStage.Invest;
+                    }
+                    break;
+                case TurnStage.Invest:
+                    //TODO: Invest in shit
+                    Stage = TurnStage.End;
+                    break;
+                case TurnStage.End:
+
+                    // End the turn
+                    NextPlayer();
+                    Stage = TurnStage.RollDice;
+
+                    break;
+            }
         }
     }
 }

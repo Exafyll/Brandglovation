@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel.Model
 {
-    public abstract class ViewModel :INotifyPropertyChanged
+    public abstract class Model : INotifyPropertyChanged
     {
         /// <summary>
         /// Allows notifying when properties change
@@ -17,7 +17,7 @@ namespace ProjectArbeteBrädspel.ViewModel
         /// <summary>
         /// Call this when you've changed a property
         /// </summary>
-        /// <param name="property">name of the changed property</param>
+        /// <param name="property">Name of the changed property</param>
         public void Change(string property)
         {
             PropertyChanged(this, new PropertyChangedEventArgs(property));

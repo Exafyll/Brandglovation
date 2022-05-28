@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.Model
 {
-    public class Player
+    public class Player : Model
     {
         /// <summary>
         /// Enumerator for the Player colors
@@ -31,7 +31,15 @@ namespace ProjectArbeteBrädspel.Model
         /// The Players points
         /// </summary>
         private int points;
-        public int Points { get { return points; } }
+        public int Points 
+        { 
+            get { return points; } 
+            set
+            {
+                points = value;
+                Change(nameof(Points));
+            }
+        }
 
         /// <summary>
         /// The Color of the Player
@@ -51,7 +59,15 @@ namespace ProjectArbeteBrädspel.Model
         public BoardTile? CurrentTile { get { return currentTile; } set { currentTile = value; } }
 
         private bool isCurrent;
-        public bool IsCurrent { get { return isCurrent; } set { isCurrent = value; } }
+        public bool IsCurrent 
+        { 
+            get { return isCurrent; } 
+            set 
+            { 
+                isCurrent = value;
+                Change(nameof(IsCurrent));
+            } 
+        }
 
         /// <summary>
         /// Constructor
@@ -74,8 +90,47 @@ namespace ProjectArbeteBrädspel.Model
         public void QueueCard(CardTileModel.CardType cardType)
         {
             cardQueue.Add(cardType);
+            Change(nameof(CardQueue));
         }
 
+        /// <summary>
+        /// Draws a cardType from the Player's Card Queue
+        /// </summary>
+        /// <returns>The type of Card to draw</returns>
+        /// <exception cref="InvalidOperationException">Returns an exception if called when no cards are queued</exception>
+        public CardTileModel.CardType DrawCard()
+        {
+            if (CardQueue.Count > 0)
+            {
+                CardTileModel.CardType type = cardQueue.First();
+                cardQueue.Remove(cardQueue.First());
+                Change(nameof(CardQueue));
+                return type;
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+        #region Effect Application
+        public void LosePoints(int points)
+        {
+            Points -= points;
+        }
+
+        public void GainPoints(int points)
+        {
+            Points += points;
+        }
+
+        // TODO: Implement other effect types
+
+        #endregion
+
+        /// <summary>
+        /// Move the player one step
+        /// </summary>
         public void Move()
         {
             if (currentTile != null && currentTile.NextTile != null)

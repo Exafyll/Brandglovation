@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ProjectArbeteBrädspel.GameCardPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectArbeteBrädspel" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <local:LargePopup DataContext="{Binding}" Width="750">
+        <local:LargePopup.Content>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+                    <TextBlock Text="{Binding Description}" FontSize="22" FontWeight="SemiBold" TextWrapping="Wrap" TextAlignment="Justify" />
+                </StackPanel>
+
+                <Border Grid.Row="1" Style="{StaticResource DefaultContainer}" Padding="20 10" Margin="0 10 0 0">
+                    <TextBlock Text="{Binding Effect}" 
+                               Foreground="{StaticResource ForegroundBrush}" 
+                               FontSize="25" 
+                               FontWeight="Bold" 
+                               TextAlignment="Center"/>
+                </Border>
+            </Grid>
+        </local:LargePopup.Content>
+    </local:LargePopup>
+</UserControl>

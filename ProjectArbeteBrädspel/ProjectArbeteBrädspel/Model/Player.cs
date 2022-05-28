@@ -47,8 +47,6 @@ namespace ProjectArbeteBrädspel.Model
         private PlayerColor color;
         public PlayerColor Color { get { return color; } }
 
-        //TODO: Add investment list
-
         /// <summary>
         /// Queue of Cards the Player has to draw
         /// </summary>
@@ -139,6 +137,21 @@ namespace ProjectArbeteBrädspel.Model
                 System.Diagnostics.Debug.WriteLine("Player " + name + " Moved to " + currentTile);
             }
         }
+
+        List<InvestmentHandler> Investments = new List<InvestmentHandler>();
+
+        public void Invest(Country country)
+        {
+            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
+            if (handler == null)
+            {
+                Investments.Add(new InvestmentHandler(country));
+                handler = Investments.Last();
+            }
+            LosePoints(handler.CreateInvestment());
+        }
+
+
 
     }
 }

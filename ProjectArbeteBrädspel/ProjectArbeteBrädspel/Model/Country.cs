@@ -20,14 +20,13 @@ namespace ProjectArbeteBrädspel.Model
         private readonly string flagSource;
         public string FlagSource { get { return flagSource; } }
 
-        //TODO: Add Investment List
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="flagSource"></param>
-        public Country(string name, string flagSource) : base()
+        public Country(string name, string flagSource, int index) : base(true,index)
         {
             this.name = name;
             this.flagSource = flagSource;

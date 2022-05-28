@@ -103,31 +103,31 @@ namespace ProjectArbeteBrädspel.Model
 
             countries = new Country[25]
             {
-                new Country("Sweden", "/Images/se.png"),
-                new Country("Norway", "/Images/no.png"),
-                new Country("Denmark", "/Images/dk.png"),
-                new Country("Finland", "/Images/fi.png"),
-                new Country("Germany", "/Images/de.png"),
-                new Country("France", "/Images/fr.png"),
-                new Country("United Kingdom", "/Images/gb.png"),
-                new Country("United States", "/Images/us.png"),
-                new Country("Canada", "/Images/ca.png"),
-                new Country("Mexico", "/Images/mx.png"),
-                new Country("Colombia", "/Images/co.png"),
-                new Country("Venezuela", "/Images/ve.png"),
-                new Country("Brazil", "/Images/br.png"),
-                new Country("Australia", "/Images/au.png"),
-                new Country("New Zealand", "/Images/nz.png"),
-                new Country("Papua New Guinea", "/Images/pg.png"),
-                new Country("China", "/Images/cn.png"),
-                new Country("Japan", "/Images/jp.png"),
-                new Country("South Korea", "/Images/kr.png"),
-                new Country("India", "/Images/in.png"),
-                new Country("Pakistan", "/Images/pk.png"),
-                new Country("Saudi Arabia", "/Images/sa.png"),
-                new Country("Egypt", "/Images/eg.png"),
-                new Country("South Africa", "/Images/za.png"),
-                new Country("Kenya", "/Images/ke.png")
+                new Country("Sweden", "/Images/se.png", 1),
+                new Country("Norway", "/Images/no.png", 2),
+                new Country("Denmark", "/Images/dk.png", 3),
+                new Country("Finland", "/Images/fi.png", 4),
+                new Country("Germany", "/Images/de.png", 5),
+                new Country("France", "/Images/fr.png", 6),
+                new Country("United Kingdom", "/Images/gb.png", 7),
+                new Country("United States", "/Images/us.png", 8),
+                new Country("Canada", "/Images/ca.png", 9),
+                new Country("Mexico", "/Images/mx.png", 10),
+                new Country("Colombia", "/Images/co.png", 11),
+                new Country("Venezuela", "/Images/ve.png", 12),
+                new Country("Brazil", "/Images/br.png", 13),
+                new Country("Australia", "/Images/au.png", 14),
+                new Country("New Zealand", "/Images/nz.png", 15),
+                new Country("Papua New Guinea", "/Images/pg.png", 16),
+                new Country("China", "/Images/cn.png", 17),
+                new Country("Japan", "/Images/jp.png", 18),
+                new Country("South Korea", "/Images/kr.png", 19),
+                new Country("India", "/Images/in.png", 20),
+                new Country("Pakistan", "/Images/pk.png", 21),
+                new Country("Saudi Arabia", "/Images/sa.png", 22),
+                new Country("Egypt", "/Images/eg.png", 23),
+                new Country("South Africa", "/Images/za.png", 24),
+                new Country("Kenya", "/Images/ke.png", 25)
             };
 
             #endregion
@@ -140,31 +140,31 @@ namespace ProjectArbeteBrädspel.Model
                 countries[1],
                 countries[2],
                 countries[3],
-                new CardTileModel(CardTileModel.CardType.Company),
+                new CardTileModel(CardTileModel.CardType.Company,26),
                 countries[4],
                 countries[5],
                 countries[6],
-                new CardTileModel(CardTileModel.CardType.Growth),
+                new CardTileModel(CardTileModel.CardType.Growth,27),
                 countries[7],
                 countries[8],
                 countries[9],
-                new CardTileModel(CardTileModel.CardType.Market),
+                new CardTileModel(CardTileModel.CardType.Market,28),
                 countries[10],
                 countries[11],
                 countries[12],
-                new CardTileModel(CardTileModel.CardType.Growth),
+                new CardTileModel(CardTileModel.CardType.Growth,29),
                 countries[13],
                 countries[14],
                 countries[15],
-                new CardTileModel(CardTileModel.CardType.Company),
+                new CardTileModel(CardTileModel.CardType.Company,30),
                 countries[16],
                 countries[17],
                 countries[18],
-                new CardTileModel(CardTileModel.CardType.Growth),
+                new CardTileModel(CardTileModel.CardType.Growth,31),
                 countries[19],
                 countries[20],
                 countries[21],
-                new CardTileModel(CardTileModel.CardType.Market),
+                new CardTileModel(CardTileModel.CardType.Market,32),
                 countries[22],
                 countries[23],
                 countries[24]
@@ -298,6 +298,11 @@ namespace ProjectArbeteBrädspel.Model
                     break;
                 case TurnStage.Invest:
                     //TODO: Invest in shit
+                    if (CurrentPlayer.CurrentTile.IsInvestable)
+                    {
+                        CurrentPlayer.Invest(countries.First(x => x.Index == CurrentPlayer.CurrentTile.Index));
+                    }
+
                     Stage = TurnStage.End;
                     break;
                 case TurnStage.End:

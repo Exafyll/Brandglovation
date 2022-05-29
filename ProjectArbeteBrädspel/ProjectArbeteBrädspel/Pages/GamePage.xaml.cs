@@ -1,5 +1,4 @@
-﻿using ProjectArbeteBrädspel.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProjectArbeteBrädspel
 {
     /// <summary>
-    /// Interaction logic for Menu.xaml
+    /// Interaction logic for GamePage.xaml
     /// </summary>
-    public partial class Menu : Window
+    public partial class GamePage : Page
     {
-        public Menu()
+        public GamePage()
         {
             InitializeComponent();
-            DataContext = new WindowViewModel(Pages.ApplicationPage.Menu);
         }
     }
 }

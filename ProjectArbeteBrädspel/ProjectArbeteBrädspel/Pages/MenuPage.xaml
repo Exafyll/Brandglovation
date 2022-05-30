@@ -61,7 +61,7 @@
                 <local:CreditsItem Person="Josef Fast" Title="UX Designer, Programmer" />
                 <local:CreditsItem Person="Truls Johnsson" Title="System Architect, Programmer" />
                 <local:CreditsItem Person="Daniel Ramzi" Title="Project Manager" />
-                <local:CreditsItem Person="Emil Arvidsson Wred" Title="Head Documenter" />
+                <local:CreditsItem Person="Emil Arvidsson Vred" Title="Head Documenter" />
                 <local:CreditsItem Person="Jesper Tobiasson" Title="Project Support" />
             </StackPanel>
         </Grid>

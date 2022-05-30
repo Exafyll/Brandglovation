@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectArbeteBrädspel.Model;
+using ProjectArbeteBrädspel.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,22 @@ namespace ProjectArbeteBrädspel
     /// </summary>
     public partial class GamePage : Page
     {
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="players">The participating players</param>
+        /// <param name="turnLimit">The maximum amount of turns</param>
+        public GamePage(List<Player> players, int turnLimit)
+        {
+            InitializeComponent();
+
+            DataContext = new GameWindowViewModel(new Game(turnLimit, players));
+        }
+
+        /// <summary>
+        /// Old parameterless constructor, will be deleted probs
+        /// </summary>
         public GamePage()
         {
             InitializeComponent();

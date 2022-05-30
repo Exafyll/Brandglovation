@@ -9,20 +9,32 @@ namespace ProjectArbeteBrädspel.ViewModel
 {
     public class WindowViewModel : ViewModel
     {
-        private ApplicationPage page;
-        public ApplicationPage Page 
-        { 
-            get { return page; } 
-            set 
-            { 
-                page = value; 
-                Change(nameof(Page));
-            }
+        //private ApplicationPage page;
+        //public ApplicationPage Page 
+        //{ 
+        //    get { return page; } 
+        //    set 
+        //    { 
+        //        page = value; 
+        //        Change(nameof(Page));
+        //    }
+        //}
+
+        //public WindowViewModel(ApplicationPage page)
+        //{
+        //    this.page = page;
+        //}
+
+        private NavigationService navigationService;
+
+        public WindowViewModel(NavigationService navigationService)
+        {
+            this.navigationService = navigationService;
         }
 
-        public WindowViewModel(ApplicationPage page)
+        private void NavigateToGame()
         {
-            this.page = page;
+            
         }
     }
 }

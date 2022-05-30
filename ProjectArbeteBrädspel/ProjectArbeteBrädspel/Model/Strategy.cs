@@ -49,5 +49,19 @@ namespace ProjectArbeteBrädspel.Model
         {
             this.tier = tier;
         }
+                               //vill ta in vilken tier som jag ska byta till
+                               //metoden ska returnera false om det redan fins en strategy på samma tier
+        public bool SetTier(StrategyTier newTier)
+        {
+            if (Tier != newTier)
+            {
+                tier = newTier;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

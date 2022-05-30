@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.Model
 {
-    public class Investment
+    public class Investment : Model
     {
         public enum InvestmentTier
         {
@@ -24,11 +24,11 @@ namespace ProjectArbeteBrädspel.Model
             {
                 switch (Tier)
                 {
-                    case InvestmentTier.TierOne: return "Sales through export";
-                    case InvestmentTier.TierTwo: return "Sales through agents";
-                    case InvestmentTier.TierThree: return "Establishment of sales subsidiary";
-                    case InvestmentTier.TierFour: return "Establishment of production facility";
-                    default: return "Acquisition of Bilia Ltd.";
+                    case InvestmentTier.TierOne: return "Export";
+                    case InvestmentTier.TierTwo: return "Retailers";
+                    case InvestmentTier.TierThree: return "Subsidiary";
+                    case InvestmentTier.TierFour: return "Facility";
+                    default: return "Acquisition";
                 }
             }
         }
@@ -50,6 +50,30 @@ namespace ProjectArbeteBrädspel.Model
         public Investment(InvestmentTier tier)
         {
             this.tier = tier;
+        }
+
+        public bool IncreaseTier()
+        {
+            switch (Tier)
+            {
+                case InvestmentTier.TierOne:
+                    tier = InvestmentTier.TierTwo;
+                    break;
+                case InvestmentTier.TierTwo:
+                    tier = InvestmentTier.TierThree;
+                    break;
+                case InvestmentTier.TierThree:
+                    tier = InvestmentTier.TierFour;
+                    break;
+                case InvestmentTier.TierFour:
+                    tier = InvestmentTier.TierFive;
+                    break;
+                default:
+                    return false;
+            }
+            Change(nameof(Amount));
+            Change(nameof(Desciption));
+            return true;
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ProjectArbeteBrädspel.Model
 {
@@ -138,7 +139,7 @@ namespace ProjectArbeteBrädspel.Model
             }
         }
 
-        List<InvestmentHandler> Investments = new List<InvestmentHandler>();
+        public List<InvestmentHandler> Investments = new List<InvestmentHandler>();
 
         public void Invest(Country country)
         {
@@ -149,6 +150,19 @@ namespace ProjectArbeteBrädspel.Model
                 handler = Investments.Last();
             }
             LosePoints(handler.CreateInvestment());
+        }
+
+        public void ApplyStrategy(Country country, Strategy.StrategyTier tier)
+        {
+            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
+            if (handler != null)
+            {
+                LosePoints(handler.CreateStrategy(tier));
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
         }
 
 

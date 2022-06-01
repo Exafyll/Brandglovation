@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ProjectArbeteBrädspel
 {
     /// <summary>
-    /// Interaction logic for MenuPage.xaml
+    /// Interaction logic for MenuView.xaml
     /// </summary>
-    public partial class MenuPage : Page
+    public partial class MenuView : UserControl
     {
-        public MenuPage()
+        public MenuView()
         {
             InitializeComponent();
         }

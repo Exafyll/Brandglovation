@@ -1,40 +1,32 @@
 ﻿using ProjectArbeteBrädspel.Pages;
+using ProjectArbeteBrädspel.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel
 {
-    public class WindowViewModel : ViewModel
+    public class WindowViewModel : BaseViewModel
     {
-        //private ApplicationPage page;
-        //public ApplicationPage Page 
-        //{ 
-        //    get { return page; } 
-        //    set 
-        //    { 
-        //        page = value; 
-        //        Change(nameof(Page));
-        //    }
-        //}
 
-        //public WindowViewModel(ApplicationPage page)
-        //{
-        //    this.page = page;
-        //}
+        private readonly NavigationStore _navigationStore;
 
-        private NavigationService navigationService;
+        public BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public WindowViewModel(NavigationService navigationService)
+        public WindowViewModel(NavigationStore navigationStore, Action exitCommand)
         {
-            this.navigationService = navigationService;
+            _navigationStore = navigationStore;
+
+            _navigationStore.PropertyChanged += _navigationStore_PropertyChanged;
+
+            _navigationStore.CurrentViewModel = new MenuViewModel(_navigationStore, exitCommand);
         }
 
-        private void NavigateToGame()
+        private void _navigationStore_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            
+            Change(nameof(CurrentViewModel));
         }
     }
 }

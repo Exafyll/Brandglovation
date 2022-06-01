@@ -25,7 +25,15 @@ namespace ProjectArbeteBrädspel.Model
         /// The Players name
         /// </summary>
         private string name;
-        public string Name { get { return name; } }
+        public string Name 
+        { 
+            get { return name; } 
+            set
+            {
+                name = value;
+                Change(nameof(Name));
+            }
+        }
 
         /// <summary>
         /// The Players points
@@ -45,7 +53,15 @@ namespace ProjectArbeteBrädspel.Model
         /// The Color of the Player
         /// </summary>
         private PlayerColor color;
-        public PlayerColor Color { get { return color; } }
+        public PlayerColor Color 
+        { 
+            get { return color; } 
+            set
+            {
+                color = value;
+                Change(nameof(Color));
+            }
+        }
 
         //TODO: Add investment list
 
@@ -97,7 +113,7 @@ namespace ProjectArbeteBrädspel.Model
         /// Draws a cardType from the Player's Card Queue
         /// </summary>
         /// <returns>The type of Card to draw</returns>
-        /// <exception cref="InvalidOperationException">Returns an exception if called when no cards are queued</exception>
+        /// <exception cref="InvalidOperationException">Returns an exception if called when no cards are queued. Just don't do it. It'll be fine</exception>
         public CardTileModel.CardType DrawCard()
         {
             if (CardQueue.Count > 0)

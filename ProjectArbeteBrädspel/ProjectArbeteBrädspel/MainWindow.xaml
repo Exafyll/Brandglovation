@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectArbeteBrädspel"
-        xmlns:converters="clr-namespace:ProjectArbeteBrädspel.ValueConverters"
+        xmlns:pagevms="clr-namespace:ProjectArbeteBrädspel.ViewModel"
         mc:Ignorable="d"
-        Title="Brädspel" 
+        Title="BrandGlovation" 
         Height="920" Width="1500"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
@@ -31,7 +31,17 @@
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
     </Window.Resources>
-    <Grid Margin="0" Background="{StaticResource ThemeBackgroundBrush}">
-        <Frame x:Name="ApplicationFrame" Content="{Binding Page, Converter={converters:ApplicationPageValueConverter}}" />
+    <Grid Background="{StaticResource ThemeBackgroundBrush}">
+        <!--<Frame x:Name="ApplicationFrame" Content="{Binding Page, Converter={converters:ApplicationPageValueConverter}}" />-->
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type pagevms:MenuViewModel}">
+                    <local:MenuView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type pagevms:GameViewModel}">
+                    <local:GameView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
     </Grid>
 </Window>

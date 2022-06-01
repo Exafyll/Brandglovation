@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.ViewModel
 {
-    public class DiceViewModel : ViewModel
+    public class DiceViewModel : BaseViewModel
     {
         private Dice dice;
 

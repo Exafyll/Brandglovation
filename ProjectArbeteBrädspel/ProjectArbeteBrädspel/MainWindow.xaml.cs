@@ -22,23 +22,16 @@ namespace ProjectArbeteBrädspel
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        private Game game;
-
-        private List<Player> players;
         public MainWindow()
         {
+            NavigationStore navigationStore = new NavigationStore(ExitGame);
             InitializeComponent();
-
-            players = new List<Player>();
-            players.Add(new Player("Player One", Player.PlayerColor.Red));
-            players.Add(new Player("Player Two", Player.PlayerColor.Purple));
-            game = new Game(100, players);
-            this.DataContext = new GameWindowViewModel(game);
+            DataContext = new WindowViewModel(navigationStore, ExitGame);
         }
 
-
-
-
+        private void ExitGame()
+        {
+            Close();
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel.ViewModel.Popup
 {
     public class GameCardViewModel : LargePopupViewModel
     {
@@ -51,7 +51,7 @@ namespace ProjectArbeteBrädspel.ViewModel
                     IsVisible = handler.DrawnCard != null;
                     if (handler.DrawnCard != null)
                     {
-                        switch(handler.DrawnCard.Type)
+                        switch (handler.DrawnCard.Type)
                         {
                             case CardTileModel.CardType.Growth:
                                 Title = "Growth Strategies";

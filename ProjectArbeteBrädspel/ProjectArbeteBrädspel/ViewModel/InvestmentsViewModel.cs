@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.ViewModel
 {
-    public class InvestmentsViewModel : ViewModel
+    public class InvestmentsViewModel : BaseViewModel
     {
         private InvestmentHandler handler;
 

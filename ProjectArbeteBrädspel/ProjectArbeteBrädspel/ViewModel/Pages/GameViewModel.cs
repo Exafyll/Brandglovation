@@ -190,7 +190,7 @@ namespace ProjectArbeteBrädspel.ViewModel
         }
 
 
-        public GameViewModel(Game game)
+        public GameViewModel(Game game, NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
 

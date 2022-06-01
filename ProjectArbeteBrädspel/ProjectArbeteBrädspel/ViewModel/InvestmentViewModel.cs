@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.ViewModel
 {
-    public class InvestmentViewModel : ViewModel
+    public class InvestmentViewModel : BaseViewModel
     {
         private Investment investment;
 

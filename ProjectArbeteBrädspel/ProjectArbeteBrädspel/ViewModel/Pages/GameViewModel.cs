@@ -16,7 +16,7 @@ namespace ProjectArbeteBrädspel.ViewModel
     public class GameViewModel : BaseViewModel
     {
         private NavigationStore _navigationStore;
-
+        
         private Game game;
 
         public string Stage
@@ -66,7 +66,9 @@ namespace ProjectArbeteBrädspel.ViewModel
 
         public RelayCommand CheeseProgressTurnCommand { get; }
 
+
         public ICommand ExitGameCommand { get; }
+
 
         #region Tiles
         // SCANDINAVIA
@@ -190,10 +192,11 @@ namespace ProjectArbeteBrädspel.ViewModel
         }
 
 
+
         public GameViewModel(Game game, NavigationStore navigationStore)
         {
             _navigationStore = navigationStore;
-
+            
             this.game = game;
             game.PropertyChanged += Game_PropertyChanged;
 
@@ -298,8 +301,8 @@ namespace ProjectArbeteBrädspel.ViewModel
 
             CheeseProgressTurnCommand = new RelayCommand(ProgressTurn);
 
-            ExitGameCommand = new NavigateCommand<MenuViewModel>(_navigationStore, ExitGame);
 
+            ExitGameCommand = new NavigateCommand<MenuViewModel>(_navigationStore, ExitGame);
             DrawnCard = new GameCardViewModel(game.GameCardHandler, CheeseProgressTurnCommand);
         }
 
@@ -318,7 +321,7 @@ namespace ProjectArbeteBrädspel.ViewModel
                     {
                         Dice.Visible = false;
                     }
-
+                    
                     ProgressTurnCommand.RaiseCanExecuteChanged();
 
                     break;

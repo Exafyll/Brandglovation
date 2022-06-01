@@ -125,6 +125,7 @@
         </Setter>
     </Style>
 
+
     <Style TargetType="{x:Type local:InvesmentsPopup}">
         <Setter Property="Template">
             <Setter.Value>

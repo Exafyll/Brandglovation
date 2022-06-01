@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel.ViewModel.Base
 {
     public class RelayCommand : ICommand
     {

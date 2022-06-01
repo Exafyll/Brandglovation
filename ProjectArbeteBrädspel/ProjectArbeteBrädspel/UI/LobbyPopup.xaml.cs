@@ -1,6 +1,4 @@
-﻿using ProjectArbeteBrädspel.Model;
-using ProjectArbeteBrädspel.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,20 +16,13 @@ using System.Windows.Shapes;
 namespace ProjectArbeteBrädspel
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LobbyPopup.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LobbyPopup : UserControl
     {
-        public MainWindow()
+        public LobbyPopup()
         {
-            NavigationStore navigationStore = new NavigationStore(ExitGame);
             InitializeComponent();
-            DataContext = new WindowViewModel(navigationStore, ExitGame);
-        }
-
-        private void ExitGame()
-        {
-            Close();
         }
     }
 }

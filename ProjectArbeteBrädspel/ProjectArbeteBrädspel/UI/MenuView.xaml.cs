@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ProjectArbeteBrädspel
 {
     /// <summary>
-    /// Interaction logic for Menu.xaml
+    /// Interaction logic for MenuView.xaml
     /// </summary>
-    public partial class Menu : Window
+    public partial class MenuView : UserControl
     {
-        public Menu()
+        public MenuView()
         {
             InitializeComponent();
         }

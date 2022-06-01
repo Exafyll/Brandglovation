@@ -5,26 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel.ViewModel.Popup
 {
-    public class LargePopupViewModel : ViewModel
+    public class LargePopupViewModel : BaseViewModel
     {
         public enum PopupColor
         {
-            GrowthBlue, 
-            CompanyYellow, 
-            MarketOrange, 
-            PlayerRed, 
-            PlayerGrey, 
-            PlayerYellow, 
+            GrowthBlue,
+            CompanyYellow,
+            MarketOrange,
+            PlayerRed,
+            PlayerGrey,
+            PlayerYellow,
             PlayerGreen,
-            PlayerBlue, 
-            PlayerPurple, 
+            PlayerBlue,
+            PlayerPurple,
             Default
         }
 
         private PopupColor color;
-        public PopupColor Color 
+        public PopupColor Color
         {
             get
             {
@@ -38,7 +38,7 @@ namespace ProjectArbeteBrädspel.ViewModel
         }
 
         private string title;
-        public string Title 
+        public string Title
         {
             get
             {
@@ -52,7 +52,7 @@ namespace ProjectArbeteBrädspel.ViewModel
         }
 
         private bool isVisible;
-        public bool IsVisible 
+        public bool IsVisible
         {
             get
             {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel.ViewModel.Board
 {
     public class CountryViewModel : BoardTileViewModel
     {
@@ -20,20 +20,20 @@ namespace ProjectArbeteBrädspel.ViewModel
 
         private Country country;
 
-        public string Name 
-        { 
-            get 
-            { 
-                return colombiaMode ? "Colombia" : country.Name; 
-            } 
+        public string Name
+        {
+            get
+            {
+                return colombiaMode ? "Colombia" : country.Name;
+            }
         }
 
-        public string FlagSource 
-        { 
-            get 
-            { 
-                return colombiaMode ? "/Images/co.png" : country.FlagSource; 
-            } 
+        public string FlagSource
+        {
+            get
+            {
+                return colombiaMode ? "/Images/co.png" : country.FlagSource;
+            }
         }
 
         public CountryViewModel(Country country) : base(country)

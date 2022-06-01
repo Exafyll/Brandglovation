@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectArbeteBrädspel.Model;
+using ProjectArbeteBrädspel.ViewModel.Board;
 
 namespace ProjectArbeteBrädspel.ViewModel
 {
-    public class PlayerViewModel : ViewModel
+    public class PlayerViewModel : BaseViewModel
     {
         private Player player;
 

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel.ViewModel.Board
 {
     public class PlayerTileViewModel : PlayerViewModel
     {

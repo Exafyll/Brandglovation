@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel
 {
-    public abstract class ViewModel :INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// Allows notifying when properties change

@@ -1,4 +1,5 @@
 ﻿using ProjectArbeteBrädspel.Model;
+using ProjectArbeteBrädspel.ViewModel.Board;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.ViewModel
 {
-    public class BoardTileViewModel : ViewModel
+    public class BoardTileViewModel : BaseViewModel
     {
         private BoardTile boardTile;
 

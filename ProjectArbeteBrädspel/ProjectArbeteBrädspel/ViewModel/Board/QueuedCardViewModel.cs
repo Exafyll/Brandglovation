@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ProjectArbeteBrädspel.ViewModel
+namespace ProjectArbeteBrädspel.ViewModel.Board
 {
-    public class QueuedCardViewModel : ViewModel
+    public class QueuedCardViewModel : BaseViewModel
     {
         private static int margin;
         private CardTileModel.CardType type;

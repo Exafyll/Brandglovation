@@ -1,4 +1,7 @@
+using System.Reflection;
 using System.Windows;
+
+// [Major Version].[Minor Version].[Build Number].[Revision]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

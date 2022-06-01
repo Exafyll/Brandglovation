@@ -29,7 +29,7 @@
 
                                     <TextBlock Grid.Column="0" Text="{Binding Title}" TextWrapping="Wrap" Foreground="{StaticResource ForegroundBrush}" FontSize="22" FontWeight="Bold" />
 
-                                    <Grid DataContext="{Binding Investment}">
+                                    <Grid Grid.Column="1" DataContext="{Binding Investment}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />

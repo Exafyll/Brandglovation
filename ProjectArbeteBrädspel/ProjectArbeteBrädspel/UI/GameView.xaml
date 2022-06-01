@@ -22,7 +22,7 @@
 
         <local:GameCardPopup Grid.Column="1" Grid.Row="1" Panel.ZIndex="1" DataContext="{Binding DrawnCard}" />
 
-        <local:InvesmentsPopup DataContext="{Binding CurrentPlayer}" />
+        <local:InvesmentsPopup Grid.Column="1" Grid.Row="1" Panel.ZIndex="1" DataContext="{Binding InvestmentsPopup}" />
 
         <!-- Game Grid -->
         <Grid Grid.Column="1" Grid.Row="1">

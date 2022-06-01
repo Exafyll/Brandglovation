@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectArbeteBrädspel.Model
 {
-    public class InvestmentHandler
+    public class InvestmentHandler : Model
     {
         private readonly Country country;
         public Country Country { get { return country; } }
@@ -17,7 +17,6 @@ namespace ProjectArbeteBrädspel.Model
 
         public int CreateInvestment()
         {
-            //checks if there alreddy is an investment on that country
 
             bool charge = true;
             
@@ -30,6 +29,8 @@ namespace ProjectArbeteBrädspel.Model
                 Investment = new Investment(Investment.InvestmentTier.TierOne);
             }
 
+
+            Change(nameof(Investment));
             return charge ? Investment.Amount : 0;
         }
 

@@ -29,7 +29,7 @@ namespace ProjectArbeteBrädspel.Model
         /// </summary>
         /// <param name="name"></param>
         /// <param name="cardType"></param>
-        public CardTileModel(CardType cardType) : base()
+        public CardTileModel(CardType cardType, int index) : base(false,index)
         {
             this.cardType = cardType;
         }

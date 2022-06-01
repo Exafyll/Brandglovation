@@ -158,7 +158,39 @@ namespace ProjectArbeteBrädspel.ViewModel
 
         public GameCardViewModel DrawnCard { get; }
 
-        public GameViewModel(Game game, NavigationStore navigationStore)
+        public InvestmentsPopupViewModel InvestmentsPopup 
+        {
+            get 
+            {
+                LargePopupViewModel.PopupColor color;
+                switch (CurrentPlayer.Color)
+                {
+                    case Player.PlayerColor.Red:
+                        color = LargePopupViewModel.PopupColor.PlayerRed;
+                        break;
+                    case Player.PlayerColor.Green:
+                        color = LargePopupViewModel.PopupColor.PlayerGreen;
+                        break;
+                    case Player.PlayerColor.Grey:
+                        color = LargePopupViewModel.PopupColor.PlayerGrey;
+                        break;
+                    case Player.PlayerColor.Blue:
+                        color = LargePopupViewModel.PopupColor.PlayerBlue;
+                        break;
+                    case Player.PlayerColor.Purple:
+                        color = LargePopupViewModel.PopupColor.PlayerPurple;
+                        break;
+                    default:
+                        color = LargePopupViewModel.PopupColor.PlayerYellow;
+                        break;
+                }
+                return new InvestmentsPopupViewModel(CurrentPlayer, color);
+            }
+             
+        }
+
+
+        public GameViewModel(Game game)
         {
             _navigationStore = navigationStore;
 
@@ -271,6 +303,7 @@ namespace ProjectArbeteBrädspel.ViewModel
             DrawnCard = new GameCardViewModel(game.GameCardHandler, CheeseProgressTurnCommand);
         }
 
+
         private void Game_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
@@ -294,6 +327,7 @@ namespace ProjectArbeteBrädspel.ViewModel
                     break;
                 case nameof(game.CurrentPlayer):
                     Change(nameof(CurrentPlayer));
+                    Change(nameof(InvestmentsPopup));
                     break;
             }
         }

@@ -45,6 +45,19 @@ namespace ProjectArbeteBrädspel.ViewModel
             }
         }
 
+        public ObservableCollection<InvestmentsViewModel> Investments
+        {
+            get
+            {
+                ObservableCollection<InvestmentsViewModel> list = new ObservableCollection<InvestmentsViewModel>();
+                foreach (InvestmentHandler handler in player.Investments)
+                {
+                    list.Add(new InvestmentsViewModel(handler));
+                }
+                return list;
+            }
+        }
+
         public PlayerViewModel(Player player)
         {
             this.player = player;
@@ -63,6 +76,9 @@ namespace ProjectArbeteBrädspel.ViewModel
                     break;
                 case nameof(player.Points):
                     Change(nameof(Points));
+                    break;
+                case nameof(player.Investments):
+                    Change(nameof(Investments));
                     break;
             }
         }

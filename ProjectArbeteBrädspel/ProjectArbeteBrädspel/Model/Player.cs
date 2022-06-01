@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ProjectArbeteBrädspel.Model
 {
@@ -63,8 +64,6 @@ namespace ProjectArbeteBrädspel.Model
             }
         }
 
-        //TODO: Add investment list
-
         /// <summary>
         /// Queue of Cards the Player has to draw
         /// </summary>
@@ -85,6 +84,10 @@ namespace ProjectArbeteBrädspel.Model
             } 
         }
 
+        private List<InvestmentHandler> investments;
+        public List<InvestmentHandler> Investments { get { return investments; } }
+        
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -97,6 +100,7 @@ namespace ProjectArbeteBrädspel.Model
             this.color = color;
             cardQueue = new List<CardTileModel.CardType>();
             isCurrent = false;
+            investments = new List<InvestmentHandler>();
         }
 
         /// <summary>
@@ -155,6 +159,36 @@ namespace ProjectArbeteBrädspel.Model
                 System.Diagnostics.Debug.WriteLine("Player " + name + " Moved to " + currentTile);
             }
         }
+
+        
+
+        public void Invest(Country country)
+        {
+            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
+            if (handler == null)
+            {
+                Investments.Add(new InvestmentHandler(country));
+                handler = Investments.Last();
+                Change(nameof(Investments));
+            }
+            LosePoints(handler.CreateInvestment());
+
+        }
+
+        public void ApplyStrategy(Country country, Strategy.StrategyTier tier)
+        {
+            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
+            if (handler != null)
+            {
+                LosePoints(handler.CreateStrategy(tier));
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+
 
     }
 }

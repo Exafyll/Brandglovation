@@ -125,10 +125,10 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type local:CreditsItem}">
+    <Style TargetType="{x:Type local:InvesmentsPopup}">
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:CreditsItem}">
+                <ControlTemplate TargetType="{x:Type local:InvesmentsPopup}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">

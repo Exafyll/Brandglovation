@@ -17,13 +17,22 @@ namespace ProjectArbeteBrädspel.Model
         private BoardTile? nextTile;
         public BoardTile? NextTile { get { return nextTile; } set { nextTile = value; } }
 
+        private bool isInvestable;
+        public bool IsInvestable { get { return isInvestable; } }
+
+        private int index;
+        public int Index { get { return index; } }
+
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="name"></param>
-        public BoardTile()
+        public BoardTile(bool isInvestable, int index)
         {
             players = new List<Player>();
+            this.isInvestable = isInvestable;
+            this.index = index;
         }
 
         /// <summary>

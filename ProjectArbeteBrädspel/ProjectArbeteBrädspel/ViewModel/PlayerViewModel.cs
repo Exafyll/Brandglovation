@@ -64,6 +64,9 @@ namespace ProjectArbeteBrädspel.ViewModel
                 case nameof(player.Points):
                     Change(nameof(Points));
                     break;
+                case nameof(player.Investments):
+                    Change(nameof(Investments));
+                    break;
             }
         }
 

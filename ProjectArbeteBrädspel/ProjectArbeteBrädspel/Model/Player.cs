@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ProjectArbeteBrädspel.Model
 {
@@ -25,15 +26,7 @@ namespace ProjectArbeteBrädspel.Model
         /// The Players name
         /// </summary>
         private string name;
-        public string Name 
-        { 
-            get { return name; } 
-            set
-            {
-                name = value;
-                Change(nameof(Name));
-            }
-        }
+        public string Name { get { return name; } }
 
         /// <summary>
         /// The Players points
@@ -53,15 +46,7 @@ namespace ProjectArbeteBrädspel.Model
         /// The Color of the Player
         /// </summary>
         private PlayerColor color;
-        public PlayerColor Color 
-        { 
-            get { return color; } 
-            set
-            {
-                color = value;
-                Change(nameof(Color));
-            }
-        }
+        public PlayerColor Color { get { return color; } }
 
         /// <summary>
         /// Queue of Cards the Player has to draw
@@ -83,6 +68,10 @@ namespace ProjectArbeteBrädspel.Model
             } 
         }
 
+        private List<InvestmentHandler> investments;
+        public List<InvestmentHandler> Investments { get { return investments; } }
+        
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -95,6 +84,7 @@ namespace ProjectArbeteBrädspel.Model
             this.color = color;
             cardQueue = new List<CardTileModel.CardType>();
             isCurrent = false;
+            investments = new List<InvestmentHandler>();
         }
 
         /// <summary>
@@ -111,7 +101,7 @@ namespace ProjectArbeteBrädspel.Model
         /// Draws a cardType from the Player's Card Queue
         /// </summary>
         /// <returns>The type of Card to draw</returns>
-        /// <exception cref="InvalidOperationException">Returns an exception if called when no cards are queued. Just don't do it. It'll be fine</exception>
+        /// <exception cref="InvalidOperationException">Returns an exception if called when no cards are queued</exception>
         public CardTileModel.CardType DrawCard()
         {
             if (CardQueue.Count > 0)
@@ -154,7 +144,7 @@ namespace ProjectArbeteBrädspel.Model
             }
         }
 
-        List<InvestmentHandler> Investments = new List<InvestmentHandler>();
+        
 
         public void Invest(Country country)
         {
@@ -163,8 +153,23 @@ namespace ProjectArbeteBrädspel.Model
             {
                 Investments.Add(new InvestmentHandler(country));
                 handler = Investments.Last();
+                Change(nameof(Investments));
             }
             LosePoints(handler.CreateInvestment());
+
+        }
+
+        public void ApplyStrategy(Country country, Strategy.StrategyTier tier)
+        {
+            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
+            if (handler != null)
+            {
+                LosePoints(handler.CreateStrategy(tier));
+            }
+            else
+            {
+                throw new InvalidOperationException();
+            }
         }
 
 

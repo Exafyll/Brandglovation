@@ -6,17 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ProjectArbeteBrädspel.Model;
-using ProjectArbeteBrädspel.Pages;
-using ProjectArbeteBrädspel.ViewModel.Base;
-using ProjectArbeteBrädspel.ViewModel.Board;
-using ProjectArbeteBrädspel.ViewModel.Popup;
 
 namespace ProjectArbeteBrädspel.ViewModel
 {
-    public class GameViewModel : BaseViewModel
+    public class GameViewModel : ViewModel
     {
-        private NavigationStore _navigationStore;
-
         private Game game;
 
         public string Stage
@@ -65,8 +59,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public RelayCommand ProgressTurnCommand { get; }
 
         public RelayCommand CheeseProgressTurnCommand { get; }
-
-        public ICommand ExitGameCommand { get; }
 
         #region Tiles
         // SCANDINAVIA
@@ -158,10 +150,40 @@ namespace ProjectArbeteBrädspel.ViewModel
 
         public GameCardViewModel DrawnCard { get; }
 
-        public GameViewModel(Game game, NavigationStore navigationStore)
+        public InvestmentsPopupViewModel InvestmentsPopup 
         {
-            _navigationStore = navigationStore;
+            get 
+            {
+                LargePopupViewModel.PopupColor color;
+                switch (CurrentPlayer.Color)
+                {
+                    case Player.PlayerColor.Red:
+                        color = LargePopupViewModel.PopupColor.PlayerRed;
+                        break;
+                    case Player.PlayerColor.Green:
+                        color = LargePopupViewModel.PopupColor.PlayerGreen;
+                        break;
+                    case Player.PlayerColor.Grey:
+                        color = LargePopupViewModel.PopupColor.PlayerGrey;
+                        break;
+                    case Player.PlayerColor.Blue:
+                        color = LargePopupViewModel.PopupColor.PlayerBlue;
+                        break;
+                    case Player.PlayerColor.Purple:
+                        color = LargePopupViewModel.PopupColor.PlayerPurple;
+                        break;
+                    default:
+                        color = LargePopupViewModel.PopupColor.PlayerYellow;
+                        break;
+                }
+                return new InvestmentsPopupViewModel(CurrentPlayer, color);
+            }
+             
+        }
 
+
+        public GameViewModel(Game game)
+        {
             this.game = game;
             game.PropertyChanged += Game_PropertyChanged;
 
@@ -266,10 +288,9 @@ namespace ProjectArbeteBrädspel.ViewModel
 
             CheeseProgressTurnCommand = new RelayCommand(ProgressTurn);
 
-            ExitGameCommand = new NavigateCommand<MenuViewModel>(_navigationStore, ExitGame);
-
             DrawnCard = new GameCardViewModel(game.GameCardHandler, CheeseProgressTurnCommand);
         }
+
 
         private void Game_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -285,7 +306,7 @@ namespace ProjectArbeteBrädspel.ViewModel
                     {
                         Dice.Visible = false;
                     }
-
+                    
                     ProgressTurnCommand.RaiseCanExecuteChanged();
 
                     break;
@@ -294,6 +315,7 @@ namespace ProjectArbeteBrädspel.ViewModel
                     break;
                 case nameof(game.CurrentPlayer):
                     Change(nameof(CurrentPlayer));
+                    Change(nameof(InvestmentsPopup));
                     break;
             }
         }
@@ -321,11 +343,6 @@ namespace ProjectArbeteBrädspel.ViewModel
         public bool ProgressTurn_CanExecute()
         {
             return game.Stage != Game.TurnStage.Movement && game.Stage != Game.TurnStage.Apply;
-        }
-
-        private MenuViewModel ExitGame()
-        {
-            return new MenuViewModel(_navigationStore, _navigationStore.CloseAction);
         }
     }
 }

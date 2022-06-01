@@ -6,11 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ProjectArbeteBrädspel.Model;
+using ProjectArbeteBrädspel.Pages;
+using ProjectArbeteBrädspel.ViewModel.Base;
+using ProjectArbeteBrädspel.ViewModel.Board;
+using ProjectArbeteBrädspel.ViewModel.Popup;
 
 namespace ProjectArbeteBrädspel.ViewModel
 {
-    public class GameViewModel : ViewModel
+    public class GameViewModel : BaseViewModel
     {
+        private NavigationStore _navigationStore;
+        
         private Game game;
 
         public string Stage
@@ -59,6 +65,10 @@ namespace ProjectArbeteBrädspel.ViewModel
         public RelayCommand ProgressTurnCommand { get; }
 
         public RelayCommand CheeseProgressTurnCommand { get; }
+
+
+        public ICommand ExitGameCommand { get; }
+
 
         #region Tiles
         // SCANDINAVIA
@@ -182,8 +192,11 @@ namespace ProjectArbeteBrädspel.ViewModel
         }
 
 
-        public GameViewModel(Game game)
+
+        public GameViewModel(Game game, NavigationStore navigationStore)
         {
+            _navigationStore = navigationStore;
+            
             this.game = game;
             game.PropertyChanged += Game_PropertyChanged;
 
@@ -288,6 +301,8 @@ namespace ProjectArbeteBrädspel.ViewModel
 
             CheeseProgressTurnCommand = new RelayCommand(ProgressTurn);
 
+
+            ExitGameCommand = new NavigateCommand<MenuViewModel>(_navigationStore, ExitGame);
             DrawnCard = new GameCardViewModel(game.GameCardHandler, CheeseProgressTurnCommand);
         }
 
@@ -343,6 +358,11 @@ namespace ProjectArbeteBrädspel.ViewModel
         public bool ProgressTurn_CanExecute()
         {
             return game.Stage != Game.TurnStage.Movement && game.Stage != Game.TurnStage.Apply;
+        }
+
+        private MenuViewModel ExitGame()
+        {
+            return new MenuViewModel(_navigationStore, _navigationStore.CloseAction);
         }
     }
 }

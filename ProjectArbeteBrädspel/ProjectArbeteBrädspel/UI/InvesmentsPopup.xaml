@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:ProjectArbeteBrädspel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <local:LargePopup>
+    <local:LargePopup Width="850">
         <local:LargePopup.Content>
-            <ScrollViewer MaxHeight="400">
+            <ScrollViewer MaxHeight="400" VerticalScrollBarVisibility="Auto" MinHeight="75">
                 <ItemsControl ItemsSource="{Binding Investments}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -17,25 +17,37 @@
                             </StackPanel>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
+                    
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Style="{StaticResource DefaultContainer}" Padding="8">
+                            <Border Style="{StaticResource DefaultContainer}" Padding="20 15" Margin="0 0 0 15">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="1.5*"/>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
 
+                                    <!-- Country Name -->
                                     <TextBlock Grid.Column="0" Text="{Binding Title}" TextWrapping="Wrap" Foreground="{StaticResource ForegroundBrush}" FontSize="22" FontWeight="Bold" />
 
+                                    <!-- Investments Container -->
                                     <Grid Grid.Column="1" DataContext="{Binding Investment}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0" Text="Investment" />
-                                        <Border Style="{StaticResource DefaultContainer}" Background="{StaticResource ForegroundBrush}" Padding="5">
+
+                                        <Grid.Resources>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="FontSize" Value="24" />
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                            </Style>
+                                        </Grid.Resources>
+                                        
+                                        <TextBlock Grid.Row="0" Text="Investment" Foreground="{StaticResource ForegroundBrush}" />
+                                        
+                                        <Border Grid.Row="1" Style="{StaticResource DefaultContainer}" Background="{StaticResource ForegroundBrush}" Padding="20 10" Margin=" 0 10 0 0">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />

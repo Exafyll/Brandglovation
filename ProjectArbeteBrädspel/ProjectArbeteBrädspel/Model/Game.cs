@@ -269,6 +269,14 @@ namespace ProjectArbeteBrädspel.Model
             }
         }
 
+        public void Invest()
+        {
+            if (CurrentPlayer.CurrentTile.IsInvestable)
+            {
+                CurrentPlayer.Invest(countries.First(x => x.Index == CurrentPlayer.CurrentTile.Index));
+            }
+        }
+
         /// <summary>
         /// Progress further through the turn
         /// </summary>
@@ -293,15 +301,22 @@ namespace ProjectArbeteBrädspel.Model
                     }
                     else
                     {
-                        Stage = TurnStage.Invest;
+                        if (CurrentPlayer.CurrentTile.IsInvestable)
+                        {
+                            Stage = TurnStage.Invest;
+                        }
+                        else
+                        {
+                            Stage = TurnStage.End;
+                        }
                     }
                     break;
                 case TurnStage.Invest:
                     //TODO: Invest in shit
-                    if (CurrentPlayer.CurrentTile.IsInvestable)
-                    {
-                        CurrentPlayer.Invest(countries.First(x => x.Index == CurrentPlayer.CurrentTile.Index));
-                    }
+                    //if (CurrentPlayer.CurrentTile.IsInvestable)
+                    //{
+                    //    CurrentPlayer.Invest(countries.First(x => x.Index == CurrentPlayer.CurrentTile.Index));
+                    //}
 
                     Stage = TurnStage.End;
                     break;

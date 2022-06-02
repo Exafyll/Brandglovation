@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <local:LargePopup Width="850">
         <local:LargePopup.Content>
-            <ScrollViewer MaxHeight="400" VerticalScrollBarVisibility="Auto" MinHeight="75">
+            <ScrollViewer MaxHeight="400" VerticalScrollBarVisibility="Auto" MinHeight="75" PanningMode="VerticalOnly" PanningDeceleration="0.5" PanningRatio="0.75">
                 <ItemsControl ItemsSource="{Binding Investments}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>

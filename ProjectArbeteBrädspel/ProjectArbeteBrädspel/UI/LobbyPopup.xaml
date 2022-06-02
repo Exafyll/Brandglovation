@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <local:LargePopup DataContext="{Binding}" Width="800">
-        <ScrollViewer Height="auto" MaxHeight="500" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Height="auto" MaxHeight="500" VerticalScrollBarVisibility="Auto" PanningMode="VerticalOnly" PanningDeceleration="0.5" PanningRatio="0.75">
             <StackPanel Orientation="Vertical">
                 <!-- Turn/Score Limits -->
                 <TextBlock Text="Game Rules" FontSize="24" FontWeight="Bold" Foreground="{StaticResource BackgroundBrush}" TextAlignment="Left" />

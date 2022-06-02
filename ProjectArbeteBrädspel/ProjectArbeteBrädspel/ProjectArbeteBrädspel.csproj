@@ -5,11 +5,14 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Brandglovation.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Images\au.png" />
     <None Remove="Images\br.png" />
+    <None Remove="Images\Brandglovation.ico" />
+    <None Remove="Images\Brandglovation.png" />
     <None Remove="Images\ca.png" />
     <None Remove="Images\cn.png" />
     <None Remove="Images\co.png" />
@@ -42,8 +45,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\Brandglovation.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\au.png" />
     <Resource Include="Images\br.png" />
+    <Resource Include="Images\Brandglovation.ico" />
+    <Resource Include="Images\Brandglovation.png" />
     <Resource Include="Images\ca.png" />
     <Resource Include="Images\cn.png" />
     <Resource Include="Images\co.png" />

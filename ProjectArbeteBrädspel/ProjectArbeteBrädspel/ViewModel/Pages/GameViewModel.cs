@@ -19,6 +19,9 @@ namespace ProjectArbeteBrädspel.ViewModel
         
         private Game game;
 
+        /// <summary>
+        /// The current turn stage
+        /// </summary>
         public string Stage
         {
             get
@@ -42,11 +45,20 @@ namespace ProjectArbeteBrädspel.ViewModel
             }
         }
 
+        /// <summary>
+        /// The text to display in the progressturn button
+        /// </summary>
         public string TurnState { get { return "Turn " + game.Turn + "/" + game.TurnLimit; } }
 
+        /// <summary>
+        /// The Players
+        /// </summary>
         private ObservableCollection<PlayerViewModel> players;
         public ObservableCollection<PlayerViewModel> Players { get { return players; } }
 
+        /// <summary>
+        /// The player currently taking their turn
+        /// </summary>
         public PlayerViewModel CurrentPlayer
         {
             get
@@ -55,10 +67,19 @@ namespace ProjectArbeteBrädspel.ViewModel
             }
         }
 
+        /// <summary>
+        /// The countries and tiles
+        /// </summary>
         private ObservableCollection<CountryViewModel> countries;
         private ObservableCollection<BoardTileViewModel> boardTiles;
 
+        /// <summary>
+        /// The dice
+        /// </summary>
         public DiceViewModel Dice { get; }
+
+
+        #region Commands
 
         public RelayCommand ColombifyCommand { get; }
 
@@ -66,8 +87,11 @@ namespace ProjectArbeteBrädspel.ViewModel
 
         public RelayCommand CheeseProgressTurnCommand { get; }
 
+        public RelayCommand ToggleInvestmentsCommand { get; }
 
         public ICommand ExitGameCommand { get; }
+
+        #endregion
 
 
         #region Tiles
@@ -158,38 +182,58 @@ namespace ProjectArbeteBrädspel.ViewModel
         public CountryViewModel Country24 { get { return countries[24]; } }
         #endregion
 
+        /// <summary>
+        /// The drawn card
+        /// </summary>
         public GameCardViewModel DrawnCard { get; }
 
+        /// <summary>
+        /// The investments popup for the current player
+        /// </summary>
+        private InvestmentsPopupViewModel investmentsPopup;
         public InvestmentsPopupViewModel InvestmentsPopup 
         {
             get 
             {
-                LargePopupViewModel.PopupColor color;
                 switch (CurrentPlayer.Color)
                 {
                     case Player.PlayerColor.Red:
-                        color = LargePopupViewModel.PopupColor.PlayerRed;
+                        investmentsPopup.Color = LargePopupViewModel.PopupColor.PlayerRed;
                         break;
                     case Player.PlayerColor.Green:
-                        color = LargePopupViewModel.PopupColor.PlayerGreen;
+                        investmentsPopup.Color = LargePopupViewModel.PopupColor.PlayerGreen;
                         break;
                     case Player.PlayerColor.Grey:
-                        color = LargePopupViewModel.PopupColor.PlayerGrey;
+                        investmentsPopup.Color = LargePopupViewModel.PopupColor.PlayerGrey;
                         break;
                     case Player.PlayerColor.Blue:
-                        color = LargePopupViewModel.PopupColor.PlayerBlue;
+                        investmentsPopup.Color = LargePopupViewModel.PopupColor.PlayerBlue;
                         break;
                     case Player.PlayerColor.Purple:
-                        color = LargePopupViewModel.PopupColor.PlayerPurple;
+                        investmentsPopup.Color = LargePopupViewModel.PopupColor.PlayerPurple;
                         break;
                     default:
-                        color = LargePopupViewModel.PopupColor.PlayerYellow;
+                        investmentsPopup.Color = LargePopupViewModel.PopupColor.PlayerYellow;
                         break;
                 }
-                return new InvestmentsPopupViewModel(CurrentPlayer, color);
+                return investmentsPopup;
             }
              
         }
+
+        private bool showInvestmentChoice;
+        public bool ShowInvestmentChoice
+        {
+            get { return showInvestmentChoice; }
+            set
+            {
+                showInvestmentChoice = value;
+                Change(nameof(ShowInvestmentChoice));
+            }
+        }
+
+        public RelayCommand InvestCommand { get; }
+        public RelayCommand DontInvestCommand { get; }
 
 
 
@@ -293,20 +337,36 @@ namespace ProjectArbeteBrädspel.ViewModel
 
             #endregion
 
-            ColombifyCommand = new RelayCommand(Colombify);
-
             Dice = new DiceViewModel(game.Dice);
+
+            #region Command instantiation
+
+            ColombifyCommand = new RelayCommand(Colombify);
 
             ProgressTurnCommand = new RelayCommand(ProgressTurn, ProgressTurn_CanExecute);
 
             CheeseProgressTurnCommand = new RelayCommand(ProgressTurn);
 
+            ToggleInvestmentsCommand = new RelayCommand(ToggleInvestments);
+
+            InvestCommand = new RelayCommand(Invest);
+            DontInvestCommand = new RelayCommand(ProgressTurn);
 
             ExitGameCommand = new NavigateCommand<MenuViewModel>(_navigationStore, ExitGame);
+
+            #endregion
+
+
+            investmentsPopup = new InvestmentsPopupViewModel(CurrentPlayer, LargePopupViewModel.PopupColor.Default, ToggleInvestmentsCommand);
+
             DrawnCard = new GameCardViewModel(game.GameCardHandler, CheeseProgressTurnCommand);
         }
 
-
+        /// <summary>
+        /// Propchange handling for the game model
+        /// </summary>
+        /// <param name="sender">I dont know</param>
+        /// <param name="e">I dont know this either</param>
         private void Game_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)
@@ -321,6 +381,15 @@ namespace ProjectArbeteBrädspel.ViewModel
                     {
                         Dice.Visible = false;
                     }
+
+                    if (game.Stage == Game.TurnStage.Invest)
+                    {
+                        ShowInvestmentChoice = true;
+                    }
+                    else
+                    {
+                        ShowInvestmentChoice = false;
+                    }
                     
                     ProgressTurnCommand.RaiseCanExecuteChanged();
 
@@ -330,6 +399,7 @@ namespace ProjectArbeteBrädspel.ViewModel
                     break;
                 case nameof(game.CurrentPlayer):
                     Change(nameof(CurrentPlayer));
+                    investmentsPopup.Player = CurrentPlayer;
                     Change(nameof(InvestmentsPopup));
                     break;
             }
@@ -355,9 +425,21 @@ namespace ProjectArbeteBrädspel.ViewModel
             game.ProgressTurn();
         }
 
+        private void Invest()
+        {
+            game.Invest();
+            ProgressTurn();
+        }
+
+        private void ToggleInvestments()
+        {
+            InvestmentsPopup.IsVisible = !InvestmentsPopup.IsVisible;
+            Change(nameof(InvestmentsPopup));
+        }
+
         public bool ProgressTurn_CanExecute()
         {
-            return game.Stage != Game.TurnStage.Movement && game.Stage != Game.TurnStage.Apply;
+            return game.Stage != Game.TurnStage.Movement && game.Stage != Game.TurnStage.Apply && game.Stage != Game.TurnStage.Invest;
         }
 
         private MenuViewModel ExitGame()

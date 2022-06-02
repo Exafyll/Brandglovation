@@ -17,6 +17,9 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="40" />
         </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <BooleanToVisibilityConverter x:Key="BoolVisibilityConverter" />
+        </Grid.Resources>
 
         <Button Grid.Column="1" Style="{StaticResource DefaultButton}" Content="Exit Game" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="40" Width="125" Command="{Binding ExitGameCommand}" />
 
@@ -25,6 +28,36 @@
         <local:GameCardPopup Grid.Column="1" Grid.Row="1" Panel.ZIndex="1" DataContext="{Binding DrawnCard}" />
 
         <local:InvesmentsPopup Grid.Column="1" Grid.Row="1" Panel.ZIndex="1" DataContext="{Binding InvestmentsPopup}" />
+
+        <!-- Investment Choice Popup -->
+        <Border Grid.Column="1" Grid.Row="1" Panel.ZIndex="1" Visibility="{Binding ShowInvestmentChoice, Converter={StaticResource BoolVisibilityConverter}}">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}" BasedOn="{StaticResource DefaultContainer}">
+                    <Setter Property="Background" Value="{StaticResource ForegroundBrush}" />
+                    <Setter Property="Width" Value="350" />
+                    <Setter Property="Height" Value="Auto" />
+                    <Setter Property="MinHeight" Value="100" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="Padding" Value="30 15" />
+                </Style>
+            </Border.Style>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="4" Direction="270" Color="Black" Opacity="0.5" />
+            </Border.Effect>
+            <StackPanel Orientation="Vertical">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource DefaultButton}">
+                        <Setter Property="Height" Value="50" />
+                        <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+                        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+                    </Style>
+                </StackPanel.Resources>
+                
+                <Button Content="Invest" Command="{Binding InvestCommand}" />
+                <Button Content="Do Nothing" Command="{Binding DontInvestCommand}" Margin="0 10 0 0" />
+            </StackPanel>
+        </Border>
 
         <!-- Game Grid -->
         <Grid Grid.Column="1" Grid.Row="1">
@@ -502,7 +535,7 @@
                 </ScrollViewer>
 
                 <!-- Details of Current Player -->
-                <Border x:Name="CurrentPlayer" DataContext="{Binding CurrentPlayer}" Style="{StaticResource DefaultContainer}" Grid.Row="1" Padding="20" Margin="0 0 0 20">
+                <Border x:Name="CurrentPlayer" Style="{StaticResource DefaultContainer}" Grid.Row="1" Padding="20" Margin="0 0 0 20">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -510,7 +543,7 @@
                         </Grid.RowDefinitions>
 
                         <!-- Information -->
-                        <Grid x:Name="CurrentDetails" Grid.Row="0" Margin="0 0 0 15" Height="45">
+                        <Grid x:Name="CurrentDetails" DataContext="{Binding CurrentPlayer}" Grid.Row="0" Margin="0 0 0 15" Height="45">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="{Binding ElementName=CurrentDetails, Path=ActualHeight}" />
                                 <ColumnDefinition Width="*" />
@@ -556,7 +589,7 @@
                         </Grid>
 
                         <!-- Investments button -->
-                        <Button x:Name="InvestmentsButton" Style="{StaticResource DefaultButton}" Content="My Investments" Grid.Row="1" />
+                        <Button x:Name="InvestmentsButton" Command="{Binding ToggleInvestmentsCommand}" Style="{StaticResource DefaultButton}" Content="My Investments" Grid.Row="1" />
                     </Grid>
                 </Border>
 

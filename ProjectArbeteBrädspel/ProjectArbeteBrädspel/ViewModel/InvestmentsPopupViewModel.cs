@@ -6,24 +6,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectArbeteBrädspel.ViewModel.Popup;
+using System.Windows.Input;
 
 namespace ProjectArbeteBrädspel.ViewModel
 {
     public class InvestmentsPopupViewModel : LargePopupViewModel
     {
         private PlayerViewModel player;
+        public PlayerViewModel Player
+        {
+            set
+            {
+                player = value;
+                player.PropertyChanged += Player_PropertyChanged;
+                Change(nameof(Investments));
+            }
+        }
 
 
         public ObservableCollection<InvestmentsViewModel> Investments 
         {
-            get {return player.Investments;}
+            get { return player.Investments; }
         }
         
 
-        public InvestmentsPopupViewModel(PlayerViewModel player, LargePopupViewModel.PopupColor color) : base (color, "Investments", null)
+        public InvestmentsPopupViewModel(PlayerViewModel player, PopupColor color, ICommand action) : base (color, "Investments", action)
         {
             this.player = player;
-            this.IsVisible = true;
 
 
             player.PropertyChanged += Player_PropertyChanged;

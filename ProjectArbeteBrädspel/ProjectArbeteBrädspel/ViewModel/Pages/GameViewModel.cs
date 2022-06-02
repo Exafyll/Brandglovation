@@ -187,6 +187,9 @@ namespace ProjectArbeteBrädspel.ViewModel
         /// </summary>
         public GameCardViewModel DrawnCard { get; }
 
+
+        #region Investments/Strategies shite
+
         /// <summary>
         /// The investments popup for the current player
         /// </summary>
@@ -233,7 +236,11 @@ namespace ProjectArbeteBrädspel.ViewModel
         }
 
         public RelayCommand InvestCommand { get; }
+
+        public RelayCommand StrategyCommand { get; }
         public RelayCommand DontInvestCommand { get; }
+
+        #endregion
 
 
 
@@ -350,6 +357,7 @@ namespace ProjectArbeteBrädspel.ViewModel
             ToggleInvestmentsCommand = new RelayCommand(ToggleInvestments);
 
             InvestCommand = new RelayCommand(Invest);
+            StrategyCommand = new RelayCommand(BuyStrategy, BuyStrategy_CanExecute);
             DontInvestCommand = new RelayCommand(ProgressTurn);
 
             ExitGameCommand = new NavigateCommand<MenuViewModel>(_navigationStore, ExitGame);
@@ -384,6 +392,7 @@ namespace ProjectArbeteBrädspel.ViewModel
 
                     if (game.Stage == Game.TurnStage.Invest)
                     {
+                        StrategyCommand.RaiseCanExecuteChanged();
                         ShowInvestmentChoice = true;
                     }
                     else
@@ -425,10 +434,23 @@ namespace ProjectArbeteBrädspel.ViewModel
             game.ProgressTurn();
         }
 
+
+        #region Invesment/Strategies command functions
+
         private void Invest()
         {
             game.Invest();
             ProgressTurn();
+        }
+
+        private void BuyStrategy()
+        {
+            //TODO: open second popup
+        }
+
+        public bool BuyStrategy_CanExecute()
+        {
+            return CurrentPlayer.CanApplyStrategy();
         }
 
         private void ToggleInvestments()
@@ -436,6 +458,8 @@ namespace ProjectArbeteBrädspel.ViewModel
             InvestmentsPopup.IsVisible = !InvestmentsPopup.IsVisible;
             Change(nameof(InvestmentsPopup));
         }
+
+        #endregion
 
         public bool ProgressTurn_CanExecute()
         {

@@ -83,6 +83,15 @@ namespace ProjectArbeteBrädspel.ViewModel
             }
         }
 
+        /// <summary>
+        /// Check if the player can apply a strategy
+        /// </summary>
+        /// <returns>A bool</returns>
+        public bool CanApplyStrategy()
+        {
+            return player.CanApplyStrategy();
+        }
+
         //public void Move()
         //{
         //    player.Move();

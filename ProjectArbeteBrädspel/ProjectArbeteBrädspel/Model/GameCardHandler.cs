@@ -379,104 +379,97 @@ namespace ProjectArbeteBrädspel.Model
                 1000));
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
+                "Management has decided to use biomass energy to run our factories " +
+                "from 2020. Our new investment is expected to have positive impact " +
+                "on the environment, however it does require significant investment. ",
+                GameCard.EffectType.LosePoints,
+                500));
+            growthCards.Add(new GameCard(CardTileModel.CardType.
+                Growth,
+                "Company sales are decreasing in competition due to not having an " +
+                "equivalent to our competitors' sustainability policies. It is time " +
+                "to innovate in sustainable packaging, to sway customers who care " +
+                "about sustainability. The packaging must not become too complex, though. ",
+                GameCard.EffectType.LosePoints,
+                300));
+            growthCards.Add(new GameCard(CardTileModel.CardType.
+                Growth,
+                "To increase awareness of our new line of products, we are " +
+                "sponsoring a local marathon. ",
+                GameCard.EffectType.LosePoints,
+                500));
+            growthCards.Add(new GameCard(CardTileModel.CardType.
+                Growth,
+                "To increase awareness of our new line of products, we are " +
+                "sponsoring a local city stadium, which is set to host the " +
+                "inaugural ceremony of the next Olympic Games. ",
+                GameCard.EffectType.LosePoints,
+                500));
+            growthCards.Add(new GameCard(CardTileModel.CardType.
+                Growth,
+                "Famous Youtuber PewDiePie has agreed to endorse our brand. ",
                 GameCard.EffectType.LosePoints,
                 200));
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
+                "Heavy users are usually the best potential customers to " +
+                "target. The company is planning to offer special rewards " +
+                "to our most loyal customers. ",
                 GameCard.EffectType.LosePoints,
-                200));
+                300));
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
+                "The customers should be able to use our products without " +
+                "significant difficulties. In line with this, we are preparing " +
+                "a series of Youtube tutorials to aid customers in learning " +
+                "to use our products. ",
                 GameCard.EffectType.LosePoints,
-                200));
+                100));
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
+                "As a complimentary reward, customers who buy our products will " +
+                "recieve free services for 3 years, starting January next year. ",
                 GameCard.EffectType.LosePoints,
-                200));
+                100)); //TODO: Should be go to next of type -> company newsletter
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
+                "We believe our customers are special. To convey this, they will " +
+                "recieve digital gift cards from the company on their birthdays. ",
                 GameCard.EffectType.LosePoints,
-                200));
+                100));
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
+                "We have integrated 5 smaller brands into our company. Although " +
+                "the road to brand extension is often bumpy, we have reaped our " +
+                "rewards in the form of substantial profit. ",
+                GameCard.EffectType.GainPoints,
+                1000));
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
+                "Management has decided to move to emerging countries with lower " +
+                "labour costs, such as China. ",
+                GameCard.EffectType.GainPoints,
+                500)); // TODO: Should be gainpointsgotospecific -> china
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
+                "As part of our sustainability efforts, the company will switch " +
+                "to using biodegradable plastics in all product packaging. " +
+                "Development of the new packaging, which will happen in " +
+                "collaboration with researchers at the local university will " +
+                "require significant funding. ",
                 GameCard.EffectType.LosePoints,
-                200));
+                2000));
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
+                "Being global is an advantage, since it impacts performance " +
+                "positively. ",
+                GameCard.EffectType.GainPoints,
+                750)); // Should be goto + make investment
             growthCards.Add(new GameCard(CardTileModel.CardType.
                 Growth,
-                "Description",
+                "Being global comes with social responsibilities. ",
                 GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
-            growthCards.Add(new GameCard(CardTileModel.CardType.
-                Growth,
-                "Description",
-                GameCard.EffectType.LosePoints,
-                200));
+                100));
             #endregion
 
             rand = new Random();

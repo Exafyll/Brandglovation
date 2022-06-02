@@ -175,6 +175,19 @@ namespace ProjectArbeteBrädspel.Model
 
         }
 
+        public void BuyStrategy(Country country, Strategy.StrategyTier tier)
+        {
+            InvestmentHandler? handler = Investments.First(o => o.Country == country);
+            LosePoints(handler.CreateStrategy(tier));
+        }
+
+
+        /// <summary>
+        /// Apply a specific tier of strategy
+        /// </summary>
+        /// <param name="country"></param>
+        /// <param name="tier"></param>
+        /// <exception cref="InvalidOperationException"></exception>
         public void ApplyStrategy(Country country, Strategy.StrategyTier tier)
         {
             InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
@@ -189,13 +202,12 @@ namespace ProjectArbeteBrädspel.Model
         }
 
         /// <summary>
-        /// Check if the player can apply a strategy to a specific country
+        /// Check if the player can apply a strategy
         /// </summary>
-        /// <param name="country">The country to check</param>
         /// <returns>A bool</returns>
-        public bool CanApplyStrategy(Country country)
+        public bool CanApplyStrategy()
         {
-            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
+            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country.Index == CurrentTile?.Index);
             return handler != null;
         }
     }

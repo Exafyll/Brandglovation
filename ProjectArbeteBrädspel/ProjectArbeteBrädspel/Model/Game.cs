@@ -280,6 +280,17 @@ namespace ProjectArbeteBrädspel.Model
             }
         }
 
+        public void BuyStrategy(Strategy.StrategyTier tier)
+        {
+            if (CurrentPlayer.CurrentTile != null)
+            {
+                if (CurrentPlayer.CanApplyStrategy())
+                {
+                    CurrentPlayer.ApplyStrategy(countries.First(x => x.Index == CurrentPlayer.CurrentTile.Index), tier);
+                }
+            }
+        }
+
         /// <summary>
         /// Progress further through the turn
         /// </summary>

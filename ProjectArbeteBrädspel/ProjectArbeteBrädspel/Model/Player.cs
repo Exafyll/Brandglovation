@@ -188,7 +188,15 @@ namespace ProjectArbeteBrädspel.Model
             }
         }
 
-
-
+        /// <summary>
+        /// Check if the player can apply a strategy to a specific country
+        /// </summary>
+        /// <param name="country">The country to check</param>
+        /// <returns>A bool</returns>
+        public bool CanApplyStrategy(Country country)
+        {
+            InvestmentHandler? handler = Investments.FirstOrDefault(o => o.Country == country);
+            return handler != null;
+        }
     }
 }

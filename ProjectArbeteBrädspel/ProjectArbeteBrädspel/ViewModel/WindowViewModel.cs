@@ -13,7 +13,7 @@ namespace ProjectArbeteBrädspel
 
         private readonly NavigationStore _navigationStore;
 
-        public BaseViewModel CurrentViewModel => _navigationStore.CurrentViewModel;
+        public BaseViewModel? CurrentViewModel => _navigationStore.CurrentViewModel;
 
         public WindowViewModel(NavigationStore navigationStore, Action exitCommand)
         {

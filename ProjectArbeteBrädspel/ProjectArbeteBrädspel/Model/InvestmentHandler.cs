@@ -11,8 +11,28 @@ namespace ProjectArbeteBrädspel.Model
         private readonly Country country;
         public Country Country { get { return country; } }
 
-        public Investment Investment;
-        public Strategy Strategy;
+        private Investment? investment;
+        public Investment? Investment 
+        { 
+            get { return investment; } 
+            set
+            {
+                investment = value;
+                Change(nameof(Investment));
+            }
+        }
+
+
+        private Strategy? strategy;
+        public Strategy? Strategy 
+        { 
+            get { return strategy; } 
+            set
+            {
+                strategy = value;
+                Change(nameof(Strategy));
+            }
+        }
 
 
         public int CreateInvestment()

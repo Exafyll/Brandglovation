@@ -9,17 +9,20 @@ namespace ProjectArbeteBrädspel.ViewModel
 {
     public class InvestmentViewModel : BaseViewModel
     {
-        private Investment investment;
+        private Investment? investment;
 
-        public int Amount { get => investment.Amount; }
+        public int Amount { get => investment?.Amount ?? 0; }
 
-        public string Description { get => investment.Desciption; }
+        public string Description { get => investment?.Desciption ?? "Whoops"; }
 
 
-        public InvestmentViewModel(Investment investment)
+        public InvestmentViewModel(Investment? investment)
         {
             this.investment = investment;
-            investment.PropertyChanged += Investment_PropertyChanged;
+            if (investment != null)
+            {
+                investment.PropertyChanged += Investment_PropertyChanged;
+            }
         }
 
         private void Investment_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)

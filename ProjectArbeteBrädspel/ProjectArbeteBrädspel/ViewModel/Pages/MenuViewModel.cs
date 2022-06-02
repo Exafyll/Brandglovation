@@ -44,6 +44,7 @@ namespace ProjectArbeteBrädspel.ViewModel
 
             LocalGameCommand = new RelayCommand(ShowLobby);
             CreateGameCommand = new NavigateCommand<GameViewModel>(_navigationStore, CreateGame);
+            RulesCommand = new RelayCommand(() => { });
             ExitCommand = new RelayCommand(exitCommand);
 
             lobby = new Lobby();

@@ -58,7 +58,7 @@ namespace ProjectArbeteBrädspel.Model
         /// <summary>
         /// The Player currently taking their turn
         /// </summary>
-        public Player CurrentPlayer { get { return players.Where(x => x.IsCurrent == true).FirstOrDefault(); } }
+        public Player CurrentPlayer { get { return players.Where(x => x.IsCurrent == true).First(); } }
 
         /// <summary>
         /// The tiles on the game board
@@ -271,9 +271,12 @@ namespace ProjectArbeteBrädspel.Model
 
         public void Invest()
         {
-            if (CurrentPlayer.CurrentTile.IsInvestable)
+            if (CurrentPlayer.CurrentTile != null)
             {
-                CurrentPlayer.Invest(countries.First(x => x.Index == CurrentPlayer.CurrentTile.Index));
+                if (CurrentPlayer.CurrentTile.IsInvestable)
+                {
+                    CurrentPlayer.Invest(countries.First(x => x.Index == CurrentPlayer.CurrentTile.Index));
+                }
             }
         }
 
@@ -301,13 +304,16 @@ namespace ProjectArbeteBrädspel.Model
                     }
                     else
                     {
-                        if (CurrentPlayer.CurrentTile.IsInvestable)
+                        if (CurrentPlayer.CurrentTile != null)
                         {
-                            Stage = TurnStage.Invest;
-                        }
-                        else
-                        {
-                            Stage = TurnStage.End;
+                            if (CurrentPlayer.CurrentTile.IsInvestable)
+                            {
+                                Stage = TurnStage.Invest;
+                            }
+                            else
+                            {
+                                Stage = TurnStage.End;
+                            }
                         }
                     }
                     break;

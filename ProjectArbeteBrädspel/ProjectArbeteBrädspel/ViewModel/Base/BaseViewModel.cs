@@ -12,7 +12,7 @@ namespace ProjectArbeteBrädspel
         /// <summary>
         /// Allows notifying when properties change
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+        public event PropertyChangedEventHandler? PropertyChanged = (sender, e) => { };
 
         /// <summary>
         /// Call this when you've changed a property
@@ -20,7 +20,10 @@ namespace ProjectArbeteBrädspel
         /// <param name="property">name of the changed property</param>
         public void Change(string property)
         {
-            PropertyChanged(this, new PropertyChangedEventArgs(property));
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
         }
     }
 }

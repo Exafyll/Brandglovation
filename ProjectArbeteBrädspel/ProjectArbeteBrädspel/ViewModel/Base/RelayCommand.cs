@@ -9,7 +9,7 @@ namespace ProjectArbeteBrädspel.ViewModel.Base
 {
     public class RelayCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged;
 
         private Action action;
         private Func<bool>? canExecuteEvaluator;

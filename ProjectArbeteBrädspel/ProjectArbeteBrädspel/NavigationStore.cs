@@ -11,8 +11,8 @@ namespace ProjectArbeteBrädspel
         private Action closeAction;
         public Action CloseAction { get { return closeAction; } }
 
-        private BaseViewModel currentViewModel;
-        public BaseViewModel CurrentViewModel 
+        private BaseViewModel? currentViewModel;
+        public BaseViewModel? CurrentViewModel 
         { 
             get { return currentViewModel; }
             set

@@ -8,7 +8,7 @@ This repository contains the development builds of the Brandglovation prototype,
 # Developers
 * Daniel Ramzi: Project Manager
 * Truls Johnsson: System Architect, Programmer
-* Josef Fast: UX Designer, Programmer
+* Emma Fast: UX Designer, Programmer
 * Emil Arvidsson Vred: Head Documenter
 * Jesper Tobiasson: Project Support
 
